@@ -52,14 +52,15 @@
 			<plugin>
 				<groupId>org.jsweet</groupId>
 				<artifactId>jsweet-maven-plugin</artifactId>
-				<version>1.2.0-SNAPSHOT</version>
+				<version>2.3.7-SNAPSHOT</version>
 				<configuration>
 					<!-- <verbose>true</verbose> -->
 					<bundle>true</bundle>
 					<declaration>true</declaration>
-					<outDir>src/main/resources/META-INF/resources/webjars/${project.artifactId}/${project.version}</outDir>
-					<dtsOut>src/main/resources/src/typings/${project.artifactId}/${project.version}</dtsOut>
+					<outDir>target</outDir>
+					<dtsOut>target</dtsOut>
 					<targetVersion>ES3</targetVersion>
+					<module>none</module>
 				</configuration>
 				<executions>
 					<execution>
@@ -97,7 +98,7 @@
 		</plugins>
 		<pluginManagement>
 			<plugins>
-				<!--This plugin's configuration is used to store Eclipse m2e settings 
+				<!--This plugin's configuration is used to store Eclipse m2e settings
 					only. It has no influence on the Maven build itself. -->
 				<plugin>
 					<groupId>org.eclipse.m2e</groupId>
@@ -133,10 +134,17 @@
 		</pluginManagement>
 	</build>
 	<dependencies>
+		<!-- https://mvnrepository.com/artifact/org.jsweet.candies/jsweet-core -->
 		<dependency>
-			<groupId>org.jsweet.candies</groupId>
-			<artifactId>jsweet-core</artifactId>
-			<version>1.2.0-SNAPSHOT</version>
+		    <groupId>org.jsweet</groupId>
+		    <artifactId>jsweet-core</artifactId>
+		    <version>5.3.0</version>
+		</dependency>
+
+		<dependency>
+				<groupId>org.jsweet</groupId>
+				<artifactId>j4ts</artifactId>
+				<version>0.5.0</version>
 		</dependency>
 	</dependencies>
 

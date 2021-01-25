@@ -4,7 +4,7 @@ var __extends = (this && this.__extends) || function (d, b) {
     d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
 };
 /* Generated from Java with JSweet 2.0.0-SNAPSHOT - http://www.jsweet.org */
-let java;
+var java;
 (function (java) {
     var beans;
     (function (beans) {
@@ -25285,5 +25285,4 @@ java.util.Date.ONE_HOUR_IN_MILLISECONDS_$LI$();
 java.util.Comparators.NATURAL_$LI$();
 java.lang.Class.classes_$LI$();
 java.lang.Class.constructors_$LI$();
-
-module.exports = {java, javaemul};
+test.Test.main(null);

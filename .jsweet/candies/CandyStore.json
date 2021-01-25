@@ -1,0 +1,17 @@
+{
+  "candies": [
+    {
+      "name": "j4ts",
+      "version": "0.5.0",
+      "lastUpdateTimestamp": 1505393746000,
+      "modelVersion": "unknown",
+      "transpilerVersion": "2.0.0",
+      "jsOutputDirPath": "/home/andrewcarterhughes/Development/jsweet-candy-quickstart/.jsweet/candies/js",
+      "jsDirPath": "META-INF/resources/webjars/j4ts/0.5.0",
+      "jsFilesPaths": [
+        "META-INF/resources/webjars/j4ts/0.5.0/.tsc-rootfile.js",
+        "META-INF/resources/webjars/j4ts/0.5.0/bundle.js"
+      ]
+    }
+  ]
+}

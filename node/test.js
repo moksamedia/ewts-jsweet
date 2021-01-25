@@ -1,4 +1,4 @@
-const java = require('./j4ts.js');
-const myCandy = require('./myCandy')(java);
-
-let EwtsConverter = myCandy.EwtsConverter();
+const EwtsConverter = require('./EwtsConverterCombined.min.js');
+const converter = new EwtsConverter();
+console.log(converter.toUnicode('bum'));
+console.log(converter.toWylie('བུམ་པ་མི་རྟགས་པ་'));
