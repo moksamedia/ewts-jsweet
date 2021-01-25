@@ -1,207 +1,6 @@
 /* Generated from Java with JSweet 2.3.7-SNAPSHOT - http://www.jsweet.org */
 namespace myCandy {
     /**
-     * Tibetan EWTS from/to DTS or ALA-LC romanization conversion methods
-     * 
-     * @author Buddhist Digital Resource Center (BDRC)
-     * @version 1.4.0
-     * @class
-     */
-    export class TransConverter {
-        static __static_initialized : boolean = false;
-        static __static_initialize() { if(!TransConverter.__static_initialized) { TransConverter.__static_initialized = true; TransConverter.__static_initializer_0(); } }
-
-        public static baseDts : string[]; public static baseDts_$LI$() : string[] { TransConverter.__static_initialize(); return TransConverter.baseDts; };
-
-        public static baseAlalc : string[]; public static baseAlalc_$LI$() : string[] { TransConverter.__static_initialize(); return TransConverter.baseAlalc; };
-
-        public static replAlalcToEwts : string[]; public static replAlalcToEwts_$LI$() : string[] { TransConverter.__static_initialize(); return TransConverter.replAlalcToEwts; };
-
-        public static replDtsToEwts : string[]; public static replDtsToEwts_$LI$() : string[] { TransConverter.__static_initialize(); return TransConverter.replDtsToEwts; };
-
-        public static baseEwts : string[]; public static baseEwts_$LI$() : string[] { TransConverter.__static_initialize(); return TransConverter.baseEwts; };
-
-        public static replEwtsToAlalc : string[]; public static replEwtsToAlalc_$LI$() : string[] { TransConverter.__static_initialize(); return TransConverter.replEwtsToAlalc; };
-
-        static DTS : number = 0;
-
-        static ALALC : number = 1;
-
-        static BOTH : number = 2;
-
-        static replMapAlalcToEwts : java.util.Map<string, string>; public static replMapAlalcToEwts_$LI$() : java.util.Map<string, string> { TransConverter.__static_initialize(); if(TransConverter.replMapAlalcToEwts == null) TransConverter.replMapAlalcToEwts = <any>(new java.util.TreeMap<string, string>()); return TransConverter.replMapAlalcToEwts; };
-
-        static replMapDtsToEwts : java.util.Map<string, string>; public static replMapDtsToEwts_$LI$() : java.util.Map<string, string> { TransConverter.__static_initialize(); if(TransConverter.replMapDtsToEwts == null) TransConverter.replMapDtsToEwts = <any>(new java.util.TreeMap<string, string>()); return TransConverter.replMapDtsToEwts; };
-
-        static replMapEwtsToAlalc : java.util.Map<string, string>; public static replMapEwtsToAlalc_$LI$() : java.util.Map<string, string> { TransConverter.__static_initialize(); if(TransConverter.replMapEwtsToAlalc == null) TransConverter.replMapEwtsToAlalc = <any>(new java.util.TreeMap<string, string>()); return TransConverter.replMapEwtsToAlalc; };
-
-        static NFD : number = 0;
-
-        static NFC : number = 1;
-
-        static ALWAYS_ALALC : number = 2;
-
-        static NEVER_ALALC : number = 3;
-
-        static __static_initializer_0() {
-            TransConverter.init();
-        }
-
-        static addMapping(target : string, ewts : string, targetType : number, toAlalc : number) {
-            if(targetType === TransConverter.DTS || targetType === TransConverter.BOTH) {
-                TransConverter.replMapDtsToEwts_$LI$().put(target, ewts);
-            }
-            if(targetType === TransConverter.ALALC || targetType === TransConverter.BOTH) {
-                TransConverter.replMapAlalcToEwts_$LI$().put(target, ewts);
-            }
-            if(toAlalc === TransConverter.ALWAYS_ALALC || toAlalc === TransConverter.NFD) {
-                TransConverter.replMapEwtsToAlalc_$LI$().put(ewts, target);
-            }
-        }
-
-        static init() {
-            TransConverter.replMapDtsToEwts_$LI$().put("-", " ");
-            TransConverter.replMapAlalcToEwts_$LI$().put("-", " ");
-            TransConverter.addMapping("\u015b", "sh", TransConverter.BOTH, TransConverter.NEVER_ALALC);
-            TransConverter.addMapping("s\u0301", "sh", TransConverter.BOTH, TransConverter.NEVER_ALALC);
-            TransConverter.addMapping("\u1e63", "Sh", TransConverter.BOTH, TransConverter.NEVER_ALALC);
-            TransConverter.addMapping("s\u0323", "Sh", TransConverter.BOTH, TransConverter.NEVER_ALALC);
-            TransConverter.addMapping("\u017a", "zh", TransConverter.BOTH, TransConverter.NEVER_ALALC);
-            TransConverter.addMapping("z\u0301", "zh", TransConverter.BOTH, TransConverter.NEVER_ALALC);
-            TransConverter.addMapping("\u00f1", "ny", TransConverter.BOTH, TransConverter.NEVER_ALALC);
-            TransConverter.addMapping("n\u0303", "ny", TransConverter.BOTH, TransConverter.NEVER_ALALC);
-            TransConverter.addMapping("\u1e45", "ng", TransConverter.BOTH, TransConverter.NEVER_ALALC);
-            TransConverter.addMapping("n\u0307", "ng", TransConverter.BOTH, TransConverter.NEVER_ALALC);
-            TransConverter.addMapping("\u0101", "A", TransConverter.BOTH, TransConverter.NFC);
-            TransConverter.addMapping("a\u0304", "A", TransConverter.BOTH, TransConverter.NFD);
-            TransConverter.addMapping("\u012b", "I", TransConverter.BOTH, TransConverter.NFC);
-            TransConverter.addMapping("i\u0304", "I", TransConverter.BOTH, TransConverter.NFD);
-            TransConverter.addMapping("\u016b", "U", TransConverter.BOTH, TransConverter.NFC);
-            TransConverter.addMapping("u\u0304", "U", TransConverter.BOTH, TransConverter.NFD);
-            TransConverter.addMapping("\u1e43", "M", TransConverter.BOTH, TransConverter.NFC);
-            TransConverter.addMapping("m\u0323", "M", TransConverter.BOTH, TransConverter.NFD);
-            TransConverter.addMapping("\u1e41", "~M", TransConverter.BOTH, TransConverter.NEVER_ALALC);
-            TransConverter.addMapping("m\u0307", "~M", TransConverter.BOTH, TransConverter.NEVER_ALALC);
-            TransConverter.addMapping("m\u0310", "~M", TransConverter.BOTH, TransConverter.ALWAYS_ALALC);
-            TransConverter.addMapping("m\u0901", "~M", TransConverter.BOTH, TransConverter.NEVER_ALALC);
-            TransConverter.addMapping("m\u0301", "~M`", TransConverter.BOTH, TransConverter.NEVER_ALALC);
-            TransConverter.addMapping("\u1e5b", "r-i", TransConverter.BOTH, TransConverter.NFC);
-            TransConverter.addMapping("r\u0323", "r-i", TransConverter.BOTH, TransConverter.NEVER_ALALC);
-            TransConverter.addMapping("r\u0325", "r-i", TransConverter.BOTH, TransConverter.NFD);
-            TransConverter.addMapping("\u1e5d", "r-I", TransConverter.BOTH, TransConverter.NFC);
-            TransConverter.addMapping("\u1e5b\u0304", "r-I", TransConverter.BOTH, TransConverter.NEVER_ALALC);
-            TransConverter.addMapping("r\u0323\u0304", "r-I", TransConverter.BOTH, TransConverter.NEVER_ALALC);
-            TransConverter.addMapping("r\u0304\u0323", "r-I", TransConverter.BOTH, TransConverter.NEVER_ALALC);
-            TransConverter.addMapping("r\u0325\u0304", "r-I", TransConverter.BOTH, TransConverter.NFD);
-            TransConverter.addMapping("r\u0304\u0325", "r-I", TransConverter.BOTH, TransConverter.NEVER_ALALC);
-            TransConverter.addMapping("\u1e37", "l-i", TransConverter.BOTH, TransConverter.NFC);
-            TransConverter.addMapping("l\u0323", "l-i", TransConverter.BOTH, TransConverter.NEVER_ALALC);
-            TransConverter.addMapping("l\u0325", "l-i", TransConverter.BOTH, TransConverter.NFD);
-            TransConverter.addMapping("\u1e39", "l-i", TransConverter.BOTH, TransConverter.NFC);
-            TransConverter.addMapping("\u1e37\u0304", "l-i", TransConverter.BOTH, TransConverter.NEVER_ALALC);
-            TransConverter.addMapping("l\u0323\u0304", "l-i", TransConverter.BOTH, TransConverter.NEVER_ALALC);
-            TransConverter.addMapping("l\u0304\u0323", "l-i", TransConverter.BOTH, TransConverter.NEVER_ALALC);
-            TransConverter.addMapping("l\u0325\u0304", "l-i", TransConverter.BOTH, TransConverter.NFD);
-            TransConverter.addMapping("l\u0304\u0325", "l-i", TransConverter.BOTH, TransConverter.NEVER_ALALC);
-            TransConverter.addMapping("\u1e6d", "T", TransConverter.BOTH, TransConverter.NFC);
-            TransConverter.addMapping("t\u0323", "T", TransConverter.BOTH, TransConverter.NFD);
-            TransConverter.addMapping("\u1e0d", "D", TransConverter.BOTH, TransConverter.NFC);
-            TransConverter.addMapping("d\u0323", "D", TransConverter.BOTH, TransConverter.NFD);
-            TransConverter.addMapping("\u1e47", "N", TransConverter.BOTH, TransConverter.NFC);
-            TransConverter.addMapping("n\u0323", "N", TransConverter.BOTH, TransConverter.NFD);
-            TransConverter.addMapping("`", "&", TransConverter.BOTH, TransConverter.ALWAYS_ALALC);
-            TransConverter.addMapping("g\u02b9y", "g.y", TransConverter.BOTH, TransConverter.ALWAYS_ALALC);
-            TransConverter.addMapping("\u02b9", "+", TransConverter.BOTH, TransConverter.NEVER_ALALC);
-            TransConverter.addMapping("\u2019", "\'", TransConverter.BOTH, TransConverter.NEVER_ALALC);
-            TransConverter.addMapping("\u2018", "\'", TransConverter.BOTH, TransConverter.NEVER_ALALC);
-            TransConverter.addMapping("\u02bc", "\'", TransConverter.BOTH, TransConverter.ALWAYS_ALALC);
-            TransConverter.addMapping("\u02be", "\'", TransConverter.BOTH, TransConverter.NEVER_ALALC);
-            TransConverter.addMapping("\u1e25", "H", TransConverter.ALALC, TransConverter.NFC);
-            TransConverter.addMapping("h\u0323", "H", TransConverter.ALALC, TransConverter.NFD);
-            TransConverter.addMapping("\u1e25", "\'", TransConverter.DTS, TransConverter.NEVER_ALALC);
-            TransConverter.addMapping("h\u0323", "\'", TransConverter.DTS, TransConverter.NEVER_ALALC);
-            TransConverter.replMapDtsToEwts_$LI$().put("\u0161", "sh");
-            TransConverter.replMapDtsToEwts_$LI$().put("s\u030c", "sh");
-            TransConverter.replMapDtsToEwts_$LI$().put("\u017e", "zh");
-            TransConverter.replMapDtsToEwts_$LI$().put("z\u030c", "zh");
-            TransConverter.baseDts = TransConverter.replMapDtsToEwts.keySet().toArray<any>([]);
-            TransConverter.replDtsToEwts = TransConverter.replMapDtsToEwts.values().toArray<any>([]);
-            TransConverter.baseAlalc = TransConverter.replMapAlalcToEwts.keySet().toArray<any>([]);
-            TransConverter.replAlalcToEwts = TransConverter.replMapAlalcToEwts.values().toArray<any>([]);
-            TransConverter.replMapEwtsToAlalc_$LI$().put("<<", "\"");
-            TransConverter.replMapEwtsToAlalc_$LI$().put(">>", "\"");
-            TransConverter.replMapEwtsToAlalc_$LI$().put("_", " ");
-            TransConverter.replMapEwtsToAlalc_$LI$().put("n+y", "n\u02b9y");
-            TransConverter.replMapEwtsToAlalc_$LI$().put("t+s", "t\u02b9s");
-            TransConverter.replMapEwtsToAlalc_$LI$().put("s+h", "s\u02b9h");
-            TransConverter.replMapEwtsToAlalc_$LI$().put("n+g", "n\u02b9g");
-            TransConverter.baseEwts = TransConverter.replMapEwtsToAlalc.keySet().toArray<any>([]);
-            TransConverter.replEwtsToAlalc = TransConverter.replMapEwtsToAlalc.values().toArray<any>([]);
-        }
-
-        /**
-         * Converts a string from DTS to EWTS
-         * 
-         * @param {string} dtsString
-         * the DTS encoded string
-         * @return {string} EWTS string
-         */
-        public static dtsToEwts(dtsString : string) : string {
-            dtsString = dtsString.toLowerCase();
-            return myCandy.StringUtils.replaceEach(dtsString, TransConverter.baseDts_$LI$(), TransConverter.replDtsToEwts_$LI$());
-        }
-
-        /**
-         * Converts a string from ALA-LC to EWTS
-         * 
-         * @param {string} alalcStr
-         * the ALA-LC encoded string
-         * @return {string} EWTS string
-         */
-        public static alalcToEwts(alalcStr : string) : string {
-            alalcStr = alalcStr.toLowerCase();
-            return myCandy.StringUtils.replaceEach(alalcStr, TransConverter.baseAlalc_$LI$(), TransConverter.replAlalcToEwts_$LI$());
-        }
-
-        /**
-         * Converts a string from EWTS to ALA-LC (NFKD, lower case)
-         * 
-         * @param {string} ewtsStr
-         * the EWTS encoded string
-         * @param {boolean} sloppy
-         * if common EWTS should be fixed before conversion
-         * @return {string} ALA-LC encoded string
-         */
-        public static ewtsToAlalc(ewtsStr : string, sloppy : boolean) : string {
-            if(sloppy) {
-                ewtsStr = myCandy.EwtsConverter.normalizeSloppyWylie(ewtsStr);
-            }
-            ewtsStr = myCandy.StringUtils.replaceEach(ewtsStr, TransConverter.baseEwts_$LI$(), TransConverter.replEwtsToAlalc_$LI$());
-            ewtsStr = /* replaceAll */ewtsStr.replace(new RegExp("([a-zA-Z])\\.([a-zA-Z])", 'g'),"$1\u02b9$2");
-            ewtsStr = /* replaceAll */ewtsStr.replace(new RegExp("[^a-zA-Z0-9 \"\u02b9\u02bc`\u0325\u0304\u0303\u0323\u0307\u0301\u0310()\\-]", 'g'),"");
-            ewtsStr = myCandy.StringUtils.strip(ewtsStr, " ");
-            ewtsStr = ewtsStr.toLowerCase();
-            return ewtsStr;
-        }
-    }
-    TransConverter["__class"] = "myCandy.TransConverter";
-
-}
-namespace myCandy {
-    export class StringUtils {
-        public static replaceEach(str : string, base : string[], repl : string[]) : string {
-            return str;
-        }
-
-        public static strip(str1 : string, str2 : string) : string {
-            return str1;
-        }
-    }
-    StringUtils["__class"] = "myCandy.StringUtils";
-
-}
-namespace myCandy {
-    /**
      * Default constructor, sets the following defaults:
      * 
      * @param {boolean} check
@@ -221,6 +20,14 @@ namespace myCandy {
     export class EwtsConverter {
         static __static_initialized : boolean = false;
         static __static_initialize() { if(!EwtsConverter.__static_initialized) { EwtsConverter.__static_initialized = true; EwtsConverter.__static_initializer_0(); } }
+
+        public static replaceEach(str : string, base : string[], repl : string[]) : string {
+            return str;
+        }
+
+        public static strip(str1 : string, str2 : string) : string {
+            return str1;
+        }
 
         /*private*/ check : boolean;
 
@@ -1466,7 +1273,7 @@ namespace myCandy {
          * @return {string} normalized String
          */
         public static normalizeSloppyWylie(str : string) : string {
-            str = myCandy.StringUtils.replaceEach(str, EwtsConverter.base_$LI$(), EwtsConverter.repl_$LI$());
+            str = EwtsConverter.replaceEach(str, EwtsConverter.base_$LI$(), EwtsConverter.repl_$LI$());
             str = /* replaceAll */str.replace(new RegExp("(^|[^aeiouAIU])H", 'g'),"$1h");
             str = /* replaceAll */str.replace(new RegExp("(^|[^aeiouAIU~])M", 'g'),"$1m");
             str = /* replace */str.split("Sh").join("ZZZ");
@@ -1497,11 +1304,6 @@ namespace myCandy {
             let out : java.lang.StringBuilder = new java.lang.StringBuilder();
             let line : number = 1;
             let units : number = 0;
-            if(this.mode === EwtsConverter.Mode.DWTS || this.mode === EwtsConverter.Mode.DTS) {
-                str = myCandy.TransConverter.dtsToEwts(str);
-            } else if(this.mode === EwtsConverter.Mode.ALALC) {
-                str = myCandy.TransConverter.alalcToEwts(str);
-            }
             if(this.fix_spacing) {
                 str = /* replace */str.split("^\\s+").join("");
             }
@@ -2440,23 +2242,3 @@ myCandy.EwtsConverter.m_subjoined_$LI$();
 myCandy.EwtsConverter.m_consonant_$LI$();
 
 myCandy.EwtsConverter.__static_initialize();
-
-myCandy.TransConverter.replMapEwtsToAlalc_$LI$();
-
-myCandy.TransConverter.replMapDtsToEwts_$LI$();
-
-myCandy.TransConverter.replMapAlalcToEwts_$LI$();
-
-myCandy.TransConverter.replEwtsToAlalc_$LI$();
-
-myCandy.TransConverter.baseEwts_$LI$();
-
-myCandy.TransConverter.replDtsToEwts_$LI$();
-
-myCandy.TransConverter.replAlalcToEwts_$LI$();
-
-myCandy.TransConverter.baseAlalc_$LI$();
-
-myCandy.TransConverter.baseDts_$LI$();
-
-myCandy.TransConverter.__static_initialize();

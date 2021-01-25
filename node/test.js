@@ -1,7 +1,6 @@
 //const EwtsConverter = require('./EwtsConverterCombined.min.js');
 //const converter = new EwtsConverter();
-const myCandy = require('./bundle');
-const EwtsConverter = myCandy.EwtsConverter;
+const EwtsConverter = require('./bundle');
 const converter = new EwtsConverter();
 
 console.log(converter.toUnicode('bum pa mi rtags pa yin/'));

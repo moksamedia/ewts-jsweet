@@ -4,7 +4,9 @@
   <artifactId>myCandy</artifactId>
   <version>0.0.1-SNAPSHOT</version>
 	<properties>
-		<jsweet.transpiler.version>1.1.1</jsweet.transpiler.version>
+		<jsweet.transpiler.version>2.3.8</jsweet.transpiler.version>
+	  <jsweet.j4ts.version>2.0.0</jsweet.j4ts.version>
+		<jsweet.core.version>6.3.0</jsweet.core.version>
 	</properties>
 	<repositories>
 		<repository>
@@ -59,7 +61,7 @@
 					<declaration>true</declaration>
 					<outDir>target</outDir>
 					<dtsOut>target</dtsOut>
-					<targetVersion>ES3</targetVersion>
+					<targetVersion>ES6</targetVersion>
 					<module>none</module>
 				</configuration>
 				<executions>
@@ -138,14 +140,15 @@
 		<dependency>
 		    <groupId>org.jsweet</groupId>
 		    <artifactId>jsweet-core</artifactId>
-		    <version>5.3.0</version>
+		    <version>${jsweet.core.version}</version>
 		</dependency>
 
 		<dependency>
-				<groupId>org.jsweet</groupId>
-				<artifactId>j4ts</artifactId>
-				<version>0.5.0</version>
+			<groupId>org.jsweet</groupId>
+			<artifactId>j4ts</artifactId>
+			<version>${jsweet.j4ts.version}</version>
 		</dependency>
+
 	</dependencies>
 
 </project>

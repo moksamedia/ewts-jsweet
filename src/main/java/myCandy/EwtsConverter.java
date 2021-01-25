@@ -15,6 +15,14 @@ import java.util.List;
  */
 public class EwtsConverter {
 
+		public static String replaceEach(String str, String[] base, String[] repl) {
+				return str;
+		};
+
+		public static String strip(String str1, String str2) {
+			return str1;
+		}
+
     // various options for Converter conversion
     private boolean check, check_strict, print_warnings, fix_spacing;
 
@@ -1319,7 +1327,7 @@ public class EwtsConverter {
      * @return normalized String
      */
     public static String normalizeSloppyWylie(String str) {
-        str = StringUtils.replaceEach(str, base, repl);
+        str = replaceEach(str, base, repl);
         // lower case H and M smartly:
         str = str.replaceAll("(^|[^aeiouAIU])H", "$1h");
         str = str.replaceAll("(^|[^aeiouAIU~])M", "$1m");
@@ -1373,12 +1381,6 @@ public class EwtsConverter {
         StringBuilder out = new StringBuilder();
         int line = 1;
         int units = 0;
-
-        if (this.mode == Mode.DWTS || this.mode == Mode.DTS) {
-            str = TransConverter.dtsToEwts(str);
-        } else if (this.mode == Mode.ALALC) {
-            str = TransConverter.alalcToEwts(str);
-        }
 
         // remove initial spaces if required
         if (this.fix_spacing) {
