@@ -11,6 +11,8 @@ The port from Java to Javascript was created using [JSweet](http://www.jsweet.or
 - `/jsweet` the JSweet transpiler project
 - `/dist` the ready-to-use Javascript modules
 
+To simplify the conversion from Java to Javascript, I had to drop the support for converting ALALC and DTS.
+
 ## License
 
 For simplicity reasons, we distribute our modifications only under the Apache 2.0 License, but the original version had this statement:
