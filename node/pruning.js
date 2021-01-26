@@ -1,204 +1,6 @@
+const {java, javaemul} = require('./prunedJavaIncludes.js');
 /* Generated from Java with JSweet 2.3.7-SNAPSHOT - http://www.jsweet.org */
 var myCandy;
-(function (myCandy) {
-    /**
-     * Tibetan EWTS from/to DTS or ALA-LC romanization conversion methods
-     *
-     * @author Buddhist Digital Resource Center (BDRC)
-     * @version 1.4.0
-     * @class
-     */
-    var TransConverter = /** @class */ (function () {
-        function TransConverter() {
-        }
-        TransConverter.__static_initialize = function () { if (!TransConverter.__static_initialized) {
-            TransConverter.__static_initialized = true;
-            TransConverter.__static_initializer_0();
-        } };
-        TransConverter.baseDts_$LI$ = function () { TransConverter.__static_initialize(); return TransConverter.baseDts; };
-        ;
-        TransConverter.baseAlalc_$LI$ = function () { TransConverter.__static_initialize(); return TransConverter.baseAlalc; };
-        ;
-        TransConverter.replAlalcToEwts_$LI$ = function () { TransConverter.__static_initialize(); return TransConverter.replAlalcToEwts; };
-        ;
-        TransConverter.replDtsToEwts_$LI$ = function () { TransConverter.__static_initialize(); return TransConverter.replDtsToEwts; };
-        ;
-        TransConverter.baseEwts_$LI$ = function () { TransConverter.__static_initialize(); return TransConverter.baseEwts; };
-        ;
-        TransConverter.replEwtsToAlalc_$LI$ = function () { TransConverter.__static_initialize(); return TransConverter.replEwtsToAlalc; };
-        ;
-        TransConverter.replMapAlalcToEwts_$LI$ = function () { TransConverter.__static_initialize(); if (TransConverter.replMapAlalcToEwts == null)
-            TransConverter.replMapAlalcToEwts = (new java.util.TreeMap()); return TransConverter.replMapAlalcToEwts; };
-        ;
-        TransConverter.replMapDtsToEwts_$LI$ = function () { TransConverter.__static_initialize(); if (TransConverter.replMapDtsToEwts == null)
-            TransConverter.replMapDtsToEwts = (new java.util.TreeMap()); return TransConverter.replMapDtsToEwts; };
-        ;
-        TransConverter.replMapEwtsToAlalc_$LI$ = function () { TransConverter.__static_initialize(); if (TransConverter.replMapEwtsToAlalc == null)
-            TransConverter.replMapEwtsToAlalc = (new java.util.TreeMap()); return TransConverter.replMapEwtsToAlalc; };
-        ;
-        TransConverter.__static_initializer_0 = function () {
-            TransConverter.init();
-        };
-        TransConverter.addMapping = function (target, ewts, targetType, toAlalc) {
-            if (targetType === TransConverter.DTS || targetType === TransConverter.BOTH) {
-                TransConverter.replMapDtsToEwts_$LI$().put(target, ewts);
-            }
-            if (targetType === TransConverter.ALALC || targetType === TransConverter.BOTH) {
-                TransConverter.replMapAlalcToEwts_$LI$().put(target, ewts);
-            }
-            if (toAlalc === TransConverter.ALWAYS_ALALC || toAlalc === TransConverter.NFD) {
-                TransConverter.replMapEwtsToAlalc_$LI$().put(ewts, target);
-            }
-        };
-        TransConverter.init = function () {
-            TransConverter.replMapDtsToEwts_$LI$().put("-", " ");
-            TransConverter.replMapAlalcToEwts_$LI$().put("-", " ");
-            TransConverter.addMapping("\u015b", "sh", TransConverter.BOTH, TransConverter.NEVER_ALALC);
-            TransConverter.addMapping("s\u0301", "sh", TransConverter.BOTH, TransConverter.NEVER_ALALC);
-            TransConverter.addMapping("\u1e63", "Sh", TransConverter.BOTH, TransConverter.NEVER_ALALC);
-            TransConverter.addMapping("s\u0323", "Sh", TransConverter.BOTH, TransConverter.NEVER_ALALC);
-            TransConverter.addMapping("\u017a", "zh", TransConverter.BOTH, TransConverter.NEVER_ALALC);
-            TransConverter.addMapping("z\u0301", "zh", TransConverter.BOTH, TransConverter.NEVER_ALALC);
-            TransConverter.addMapping("\u00f1", "ny", TransConverter.BOTH, TransConverter.NEVER_ALALC);
-            TransConverter.addMapping("n\u0303", "ny", TransConverter.BOTH, TransConverter.NEVER_ALALC);
-            TransConverter.addMapping("\u1e45", "ng", TransConverter.BOTH, TransConverter.NEVER_ALALC);
-            TransConverter.addMapping("n\u0307", "ng", TransConverter.BOTH, TransConverter.NEVER_ALALC);
-            TransConverter.addMapping("\u0101", "A", TransConverter.BOTH, TransConverter.NFC);
-            TransConverter.addMapping("a\u0304", "A", TransConverter.BOTH, TransConverter.NFD);
-            TransConverter.addMapping("\u012b", "I", TransConverter.BOTH, TransConverter.NFC);
-            TransConverter.addMapping("i\u0304", "I", TransConverter.BOTH, TransConverter.NFD);
-            TransConverter.addMapping("\u016b", "U", TransConverter.BOTH, TransConverter.NFC);
-            TransConverter.addMapping("u\u0304", "U", TransConverter.BOTH, TransConverter.NFD);
-            TransConverter.addMapping("\u1e43", "M", TransConverter.BOTH, TransConverter.NFC);
-            TransConverter.addMapping("m\u0323", "M", TransConverter.BOTH, TransConverter.NFD);
-            TransConverter.addMapping("\u1e41", "~M", TransConverter.BOTH, TransConverter.NEVER_ALALC);
-            TransConverter.addMapping("m\u0307", "~M", TransConverter.BOTH, TransConverter.NEVER_ALALC);
-            TransConverter.addMapping("m\u0310", "~M", TransConverter.BOTH, TransConverter.ALWAYS_ALALC);
-            TransConverter.addMapping("m\u0901", "~M", TransConverter.BOTH, TransConverter.NEVER_ALALC);
-            TransConverter.addMapping("m\u0301", "~M`", TransConverter.BOTH, TransConverter.NEVER_ALALC);
-            TransConverter.addMapping("\u1e5b", "r-i", TransConverter.BOTH, TransConverter.NFC);
-            TransConverter.addMapping("r\u0323", "r-i", TransConverter.BOTH, TransConverter.NEVER_ALALC);
-            TransConverter.addMapping("r\u0325", "r-i", TransConverter.BOTH, TransConverter.NFD);
-            TransConverter.addMapping("\u1e5d", "r-I", TransConverter.BOTH, TransConverter.NFC);
-            TransConverter.addMapping("\u1e5b\u0304", "r-I", TransConverter.BOTH, TransConverter.NEVER_ALALC);
-            TransConverter.addMapping("r\u0323\u0304", "r-I", TransConverter.BOTH, TransConverter.NEVER_ALALC);
-            TransConverter.addMapping("r\u0304\u0323", "r-I", TransConverter.BOTH, TransConverter.NEVER_ALALC);
-            TransConverter.addMapping("r\u0325\u0304", "r-I", TransConverter.BOTH, TransConverter.NFD);
-            TransConverter.addMapping("r\u0304\u0325", "r-I", TransConverter.BOTH, TransConverter.NEVER_ALALC);
-            TransConverter.addMapping("\u1e37", "l-i", TransConverter.BOTH, TransConverter.NFC);
-            TransConverter.addMapping("l\u0323", "l-i", TransConverter.BOTH, TransConverter.NEVER_ALALC);
-            TransConverter.addMapping("l\u0325", "l-i", TransConverter.BOTH, TransConverter.NFD);
-            TransConverter.addMapping("\u1e39", "l-i", TransConverter.BOTH, TransConverter.NFC);
-            TransConverter.addMapping("\u1e37\u0304", "l-i", TransConverter.BOTH, TransConverter.NEVER_ALALC);
-            TransConverter.addMapping("l\u0323\u0304", "l-i", TransConverter.BOTH, TransConverter.NEVER_ALALC);
-            TransConverter.addMapping("l\u0304\u0323", "l-i", TransConverter.BOTH, TransConverter.NEVER_ALALC);
-            TransConverter.addMapping("l\u0325\u0304", "l-i", TransConverter.BOTH, TransConverter.NFD);
-            TransConverter.addMapping("l\u0304\u0325", "l-i", TransConverter.BOTH, TransConverter.NEVER_ALALC);
-            TransConverter.addMapping("\u1e6d", "T", TransConverter.BOTH, TransConverter.NFC);
-            TransConverter.addMapping("t\u0323", "T", TransConverter.BOTH, TransConverter.NFD);
-            TransConverter.addMapping("\u1e0d", "D", TransConverter.BOTH, TransConverter.NFC);
-            TransConverter.addMapping("d\u0323", "D", TransConverter.BOTH, TransConverter.NFD);
-            TransConverter.addMapping("\u1e47", "N", TransConverter.BOTH, TransConverter.NFC);
-            TransConverter.addMapping("n\u0323", "N", TransConverter.BOTH, TransConverter.NFD);
-            TransConverter.addMapping("`", "&", TransConverter.BOTH, TransConverter.ALWAYS_ALALC);
-            TransConverter.addMapping("g\u02b9y", "g.y", TransConverter.BOTH, TransConverter.ALWAYS_ALALC);
-            TransConverter.addMapping("\u02b9", "+", TransConverter.BOTH, TransConverter.NEVER_ALALC);
-            TransConverter.addMapping("\u2019", "\'", TransConverter.BOTH, TransConverter.NEVER_ALALC);
-            TransConverter.addMapping("\u2018", "\'", TransConverter.BOTH, TransConverter.NEVER_ALALC);
-            TransConverter.addMapping("\u02bc", "\'", TransConverter.BOTH, TransConverter.ALWAYS_ALALC);
-            TransConverter.addMapping("\u02be", "\'", TransConverter.BOTH, TransConverter.NEVER_ALALC);
-            TransConverter.addMapping("\u1e25", "H", TransConverter.ALALC, TransConverter.NFC);
-            TransConverter.addMapping("h\u0323", "H", TransConverter.ALALC, TransConverter.NFD);
-            TransConverter.addMapping("\u1e25", "\'", TransConverter.DTS, TransConverter.NEVER_ALALC);
-            TransConverter.addMapping("h\u0323", "\'", TransConverter.DTS, TransConverter.NEVER_ALALC);
-            TransConverter.replMapDtsToEwts_$LI$().put("\u0161", "sh");
-            TransConverter.replMapDtsToEwts_$LI$().put("s\u030c", "sh");
-            TransConverter.replMapDtsToEwts_$LI$().put("\u017e", "zh");
-            TransConverter.replMapDtsToEwts_$LI$().put("z\u030c", "zh");
-            TransConverter.baseDts = TransConverter.replMapDtsToEwts.keySet().toArray([]);
-            TransConverter.replDtsToEwts = TransConverter.replMapDtsToEwts.values().toArray([]);
-            TransConverter.baseAlalc = TransConverter.replMapAlalcToEwts.keySet().toArray([]);
-            TransConverter.replAlalcToEwts = TransConverter.replMapAlalcToEwts.values().toArray([]);
-            TransConverter.replMapEwtsToAlalc_$LI$().put("<<", "\"");
-            TransConverter.replMapEwtsToAlalc_$LI$().put(">>", "\"");
-            TransConverter.replMapEwtsToAlalc_$LI$().put("_", " ");
-            TransConverter.replMapEwtsToAlalc_$LI$().put("n+y", "n\u02b9y");
-            TransConverter.replMapEwtsToAlalc_$LI$().put("t+s", "t\u02b9s");
-            TransConverter.replMapEwtsToAlalc_$LI$().put("s+h", "s\u02b9h");
-            TransConverter.replMapEwtsToAlalc_$LI$().put("n+g", "n\u02b9g");
-            TransConverter.baseEwts = TransConverter.replMapEwtsToAlalc.keySet().toArray([]);
-            TransConverter.replEwtsToAlalc = TransConverter.replMapEwtsToAlalc.values().toArray([]);
-        };
-        /**
-         * Converts a string from DTS to EWTS
-         *
-         * @param {string} dtsString
-         * the DTS encoded string
-         * @return {string} EWTS string
-         */
-        TransConverter.dtsToEwts = function (dtsString) {
-            dtsString = dtsString.toLowerCase();
-            return myCandy.StringUtils.replaceEach(dtsString, TransConverter.baseDts_$LI$(), TransConverter.replDtsToEwts_$LI$());
-        };
-        /**
-         * Converts a string from ALA-LC to EWTS
-         *
-         * @param {string} alalcStr
-         * the ALA-LC encoded string
-         * @return {string} EWTS string
-         */
-        TransConverter.alalcToEwts = function (alalcStr) {
-            alalcStr = alalcStr.toLowerCase();
-            return myCandy.StringUtils.replaceEach(alalcStr, TransConverter.baseAlalc_$LI$(), TransConverter.replAlalcToEwts_$LI$());
-        };
-        /**
-         * Converts a string from EWTS to ALA-LC (NFKD, lower case)
-         *
-         * @param {string} ewtsStr
-         * the EWTS encoded string
-         * @param {boolean} sloppy
-         * if common EWTS should be fixed before conversion
-         * @return {string} ALA-LC encoded string
-         */
-        TransConverter.ewtsToAlalc = function (ewtsStr, sloppy) {
-            if (sloppy) {
-                ewtsStr = myCandy.EwtsConverter.normalizeSloppyWylie(ewtsStr);
-            }
-            ewtsStr = myCandy.StringUtils.replaceEach(ewtsStr, TransConverter.baseEwts_$LI$(), TransConverter.replEwtsToAlalc_$LI$());
-            ewtsStr = /* replaceAll */ ewtsStr.replace(new RegExp("([a-zA-Z])\\.([a-zA-Z])", 'g'), "$1\u02b9$2");
-            ewtsStr = /* replaceAll */ ewtsStr.replace(new RegExp("[^a-zA-Z0-9 \"\u02b9\u02bc`\u0325\u0304\u0303\u0323\u0307\u0301\u0310()\\-]", 'g'), "");
-            ewtsStr = myCandy.StringUtils.strip(ewtsStr, " ");
-            ewtsStr = ewtsStr.toLowerCase();
-            return ewtsStr;
-        };
-        TransConverter.__static_initialized = false;
-        TransConverter.DTS = 0;
-        TransConverter.ALALC = 1;
-        TransConverter.BOTH = 2;
-        TransConverter.NFD = 0;
-        TransConverter.NFC = 1;
-        TransConverter.ALWAYS_ALALC = 2;
-        TransConverter.NEVER_ALALC = 3;
-        return TransConverter;
-    }());
-    myCandy.TransConverter = TransConverter;
-    TransConverter["__class"] = "myCandy.TransConverter";
-})(myCandy || (myCandy = {}));
-(function (myCandy) {
-    var StringUtils = /** @class */ (function () {
-        function StringUtils() {
-        }
-        StringUtils.replaceEach = function (str, base, repl) {
-            return str;
-        };
-        StringUtils.strip = function (str1, str2) {
-            return str1.strip(str2);
-        };
-        return StringUtils;
-    }());
-    myCandy.StringUtils = StringUtils;
-    StringUtils["__class"] = "myCandy.StringUtils";
-})(myCandy || (myCandy = {}));
 (function (myCandy) {
     /**
      * Default constructor, sets the following defaults:
@@ -217,11 +19,10 @@ var myCandy;
      * @class
      * @author Roger Espel Llima
      */
-    var EwtsConverter = /** @class */ (function () {
-        function EwtsConverter(check, check_strict, print_warnings, fix_spacing, mode) {
-            var _this = this;
+    class EwtsConverter {
+        constructor(check, check_strict, print_warnings, fix_spacing, mode) {
             if (((typeof check === 'boolean') || check === null) && ((typeof check_strict === 'boolean') || check_strict === null) && ((typeof print_warnings === 'boolean') || print_warnings === null) && ((typeof fix_spacing === 'boolean') || fix_spacing === null) && ((typeof mode === 'number') || mode === null)) {
-                var __args = arguments;
+                let __args = arguments;
                 if (this.check === undefined)
                     this.check = false;
                 if (this.check_strict === undefined)
@@ -240,12 +41,12 @@ var myCandy;
                 if (this.fix_spacing === undefined)
                     this.fix_spacing = false;
                 this.mode = EwtsConverter.Mode.EWTS;
-                (function () {
-                    _this.initWylie(check, check_strict, print_warnings, fix_spacing, mode);
+                (() => {
+                    this.initWylie(check, check_strict, print_warnings, fix_spacing, mode);
                 })();
             }
             else if (((typeof check === 'boolean') || check === null) && ((typeof check_strict === 'boolean') || check_strict === null) && ((typeof print_warnings === 'boolean') || print_warnings === null) && ((typeof fix_spacing === 'boolean') || fix_spacing === null) && mode === undefined) {
-                var __args = arguments;
+                let __args = arguments;
                 if (this.check === undefined)
                     this.check = false;
                 if (this.check_strict === undefined)
@@ -264,12 +65,12 @@ var myCandy;
                 if (this.fix_spacing === undefined)
                     this.fix_spacing = false;
                 this.mode = EwtsConverter.Mode.EWTS;
-                (function () {
-                    _this.initWylie(check, check_strict, print_warnings, fix_spacing, EwtsConverter.Mode.EWTS);
+                (() => {
+                    this.initWylie(check, check_strict, print_warnings, fix_spacing, EwtsConverter.Mode.EWTS);
                 })();
             }
             else if (check === undefined && check_strict === undefined && print_warnings === undefined && fix_spacing === undefined && mode === undefined) {
-                var __args = arguments;
+                let __args = arguments;
                 if (this.check === undefined)
                     this.check = false;
                 if (this.check_strict === undefined)
@@ -288,79 +89,85 @@ var myCandy;
                 if (this.fix_spacing === undefined)
                     this.fix_spacing = false;
                 this.mode = EwtsConverter.Mode.EWTS;
-                (function () {
-                    _this.initWylie(true, true, false, true, EwtsConverter.Mode.EWTS);
+                (() => {
+                    this.initWylie(true, true, false, true, EwtsConverter.Mode.EWTS);
                 })();
             }
             else
                 throw new Error('invalid overload');
         }
-        EwtsConverter.__static_initialize = function () { if (!EwtsConverter.__static_initialized) {
+        static __static_initialize() { if (!EwtsConverter.__static_initialized) {
             EwtsConverter.__static_initialized = true;
             EwtsConverter.__static_initializer_0();
-        } };
-        EwtsConverter.m_consonant_$LI$ = function () { EwtsConverter.__static_initialize(); return EwtsConverter.m_consonant; };
+        } }
+        static replaceEach(str, base, repl) {
+            return str;
+        }
+        static strip(str1, str2) {
+            return str1;
+        }
+        static m_consonant_$LI$() { EwtsConverter.__static_initialize(); return EwtsConverter.m_consonant; }
         ;
-        EwtsConverter.m_subjoined_$LI$ = function () { EwtsConverter.__static_initialize(); return EwtsConverter.m_subjoined; };
+        static m_subjoined_$LI$() { EwtsConverter.__static_initialize(); return EwtsConverter.m_subjoined; }
         ;
-        EwtsConverter.m_vowel_$LI$ = function () { EwtsConverter.__static_initialize(); return EwtsConverter.m_vowel; };
+        static m_vowel_$LI$() { EwtsConverter.__static_initialize(); return EwtsConverter.m_vowel; }
         ;
-        EwtsConverter.m_final_uni_$LI$ = function () { EwtsConverter.__static_initialize(); return EwtsConverter.m_final_uni; };
+        static m_final_uni_$LI$() { EwtsConverter.__static_initialize(); return EwtsConverter.m_final_uni; }
         ;
-        EwtsConverter.m_final_class_$LI$ = function () { EwtsConverter.__static_initialize(); return EwtsConverter.m_final_class; };
+        static m_final_class_$LI$() { EwtsConverter.__static_initialize(); return EwtsConverter.m_final_class; }
         ;
-        EwtsConverter.m_other_$LI$ = function () { EwtsConverter.__static_initialize(); return EwtsConverter.m_other; };
+        static m_other_$LI$() { EwtsConverter.__static_initialize(); return EwtsConverter.m_other; }
         ;
-        EwtsConverter.m_ambiguous_wylie_$LI$ = function () { EwtsConverter.__static_initialize(); return EwtsConverter.m_ambiguous_wylie; };
+        static m_ambiguous_wylie_$LI$() { EwtsConverter.__static_initialize(); return EwtsConverter.m_ambiguous_wylie; }
         ;
-        EwtsConverter.m_tib_vowel_long_$LI$ = function () { EwtsConverter.__static_initialize(); return EwtsConverter.m_tib_vowel_long; };
+        static m_tib_vowel_long_$LI$() { EwtsConverter.__static_initialize(); return EwtsConverter.m_tib_vowel_long; }
         ;
-        EwtsConverter.m_tib_caret_$LI$ = function () { EwtsConverter.__static_initialize(); return EwtsConverter.m_tib_caret; };
+        static m_tib_caret_$LI$() { EwtsConverter.__static_initialize(); return EwtsConverter.m_tib_caret; }
         ;
-        EwtsConverter.m_tib_top_$LI$ = function () { EwtsConverter.__static_initialize(); return EwtsConverter.m_tib_top; };
+        static m_tib_top_$LI$() { EwtsConverter.__static_initialize(); return EwtsConverter.m_tib_top; }
         ;
-        EwtsConverter.m_tib_subjoined_$LI$ = function () { EwtsConverter.__static_initialize(); return EwtsConverter.m_tib_subjoined; };
+        static m_tib_subjoined_$LI$() { EwtsConverter.__static_initialize(); return EwtsConverter.m_tib_subjoined; }
         ;
-        EwtsConverter.m_tib_vowel_$LI$ = function () { EwtsConverter.__static_initialize(); return EwtsConverter.m_tib_vowel; };
+        static m_tib_vowel_$LI$() { EwtsConverter.__static_initialize(); return EwtsConverter.m_tib_vowel; }
         ;
-        EwtsConverter.m_tib_final_wylie_$LI$ = function () { EwtsConverter.__static_initialize(); return EwtsConverter.m_tib_final_wylie; };
+        static m_tib_final_wylie_$LI$() { EwtsConverter.__static_initialize(); return EwtsConverter.m_tib_final_wylie; }
         ;
-        EwtsConverter.m_tib_final_class_$LI$ = function () { EwtsConverter.__static_initialize(); return EwtsConverter.m_tib_final_class; };
+        static m_tib_final_class_$LI$() { EwtsConverter.__static_initialize(); return EwtsConverter.m_tib_final_class; }
         ;
-        EwtsConverter.m_tib_other_$LI$ = function () { EwtsConverter.__static_initialize(); return EwtsConverter.m_tib_other; };
+        static m_tib_other_$LI$() { EwtsConverter.__static_initialize(); return EwtsConverter.m_tib_other; }
         ;
-        EwtsConverter.m_ambiguous_key_$LI$ = function () { EwtsConverter.__static_initialize(); return EwtsConverter.m_ambiguous_key; };
+        static m_ambiguous_key_$LI$() { EwtsConverter.__static_initialize(); return EwtsConverter.m_ambiguous_key; }
         ;
-        EwtsConverter.m_tokens_start_$LI$ = function () { EwtsConverter.__static_initialize(); return EwtsConverter.m_tokens_start; };
+        static m_tokens_start_$LI$() { EwtsConverter.__static_initialize(); return EwtsConverter.m_tokens_start; }
         ;
-        EwtsConverter.m_special_$LI$ = function () { EwtsConverter.__static_initialize(); return EwtsConverter.m_special; };
+        static m_special_$LI$() { EwtsConverter.__static_initialize(); return EwtsConverter.m_special; }
         ;
-        EwtsConverter.m_suffixes_$LI$ = function () { EwtsConverter.__static_initialize(); return EwtsConverter.m_suffixes; };
+        static m_suffixes_$LI$() { EwtsConverter.__static_initialize(); return EwtsConverter.m_suffixes; }
         ;
-        EwtsConverter.m_tib_stacks_$LI$ = function () { EwtsConverter.__static_initialize(); return EwtsConverter.m_tib_stacks; };
+        static m_tib_stacks_$LI$() { EwtsConverter.__static_initialize(); return EwtsConverter.m_tib_stacks; }
         ;
-        EwtsConverter.m_tokens_$LI$ = function () { EwtsConverter.__static_initialize(); return EwtsConverter.m_tokens; };
+        static m_tokens_$LI$() { EwtsConverter.__static_initialize(); return EwtsConverter.m_tokens; }
         ;
-        EwtsConverter.m_affixedsuff2_$LI$ = function () { EwtsConverter.__static_initialize(); return EwtsConverter.m_affixedsuff2; };
+        static m_affixedsuff2_$LI$() { EwtsConverter.__static_initialize(); return EwtsConverter.m_affixedsuff2; }
         ;
-        EwtsConverter.m_superscripts_$LI$ = function () { EwtsConverter.__static_initialize(); return EwtsConverter.m_superscripts; };
+        static m_superscripts_$LI$() { EwtsConverter.__static_initialize(); return EwtsConverter.m_superscripts; }
         ;
-        EwtsConverter.m_subscripts_$LI$ = function () { EwtsConverter.__static_initialize(); return EwtsConverter.m_subscripts; };
+        static m_subscripts_$LI$() { EwtsConverter.__static_initialize(); return EwtsConverter.m_subscripts; }
         ;
-        EwtsConverter.m_prefixes_$LI$ = function () { EwtsConverter.__static_initialize(); return EwtsConverter.m_prefixes; };
+        static m_prefixes_$LI$() { EwtsConverter.__static_initialize(); return EwtsConverter.m_prefixes; }
         ;
-        EwtsConverter.m_suff2_$LI$ = function () { EwtsConverter.__static_initialize(); return EwtsConverter.m_suff2; };
+        static m_suff2_$LI$() { EwtsConverter.__static_initialize(); return EwtsConverter.m_suff2; }
         ;
-        EwtsConverter.base_$LI$ = function () { EwtsConverter.__static_initialize(); if (EwtsConverter.base == null)
-            EwtsConverter.base = (function (s) { var a = []; while (s-- > 0)
-                a.push(null); return a; })(47); return EwtsConverter.base; };
+        static base_$LI$() { EwtsConverter.__static_initialize(); if (EwtsConverter.base == null)
+            EwtsConverter.base = (s => { let a = []; while (s-- > 0)
+                a.push(null); return a; })(47); return EwtsConverter.base; }
         ;
-        EwtsConverter.repl_$LI$ = function () { EwtsConverter.__static_initialize(); if (EwtsConverter.repl == null)
-            EwtsConverter.repl = (function (s) { var a = []; while (s-- > 0)
-                a.push(null); return a; })(47); return EwtsConverter.repl; };
+        static repl_$LI$() { EwtsConverter.__static_initialize(); if (EwtsConverter.repl == null)
+            EwtsConverter.repl = (s => { let a = []; while (s-- > 0)
+                a.push(null); return a; })(47); return EwtsConverter.repl; }
         ;
-        EwtsConverter.initHashes = function () {
-            var tmpSet;
+        static initHashes() {
+            let tmpSet;
             EwtsConverter.m_consonant = (new java.util.HashMap());
             EwtsConverter.m_consonant_$LI$().put("k", "\u0f40");
             EwtsConverter.m_consonant_$LI$().put("kh", "\u0f41");
@@ -1154,9 +961,9 @@ var myCandy;
             EwtsConverter.m_tokens_$LI$().add("~M");
             EwtsConverter.m_tokens_$LI$().add("~X");
             EwtsConverter.m_tokens_$LI$().add("\r\n");
-        };
-        EwtsConverter.initSloppyRepl = function () {
-            var i = 0;
+        }
+        static initSloppyRepl() {
+            let i = 0;
             EwtsConverter.base_$LI$()[i] = "\u02bc";
             EwtsConverter.repl_$LI$()[i] = "\'";
             i++;
@@ -1298,129 +1105,129 @@ var myCandy;
             EwtsConverter.base_$LI$()[i] = "adm";
             EwtsConverter.repl_$LI$()[i] = "ad+m";
             i++;
-        };
-        EwtsConverter.__static_initializer_0 = function () {
+        }
+        static __static_initializer_0() {
             EwtsConverter.initHashes();
             EwtsConverter.initSloppyRepl();
-        };
-        EwtsConverter.prototype.initWylie = function (check, check_strict, print_warnings, fix_spacing, mode) {
+        }
+        initWylie(check, check_strict, print_warnings, fix_spacing, mode) {
             if (check_strict && !check) {
-                throw new java.lang.RuntimeException("check_strict requires check.");
+                throw new Error("check_strict requires check.");
             }
             this.check = check;
             this.check_strict = check_strict;
             this.print_warnings = print_warnings;
             this.fix_spacing = fix_spacing;
             this.mode = mode;
-        };
-        EwtsConverter.prototype.consonant = function (s) {
+        }
+        consonant(s) {
             return EwtsConverter.m_consonant_$LI$().get(s);
-        };
-        EwtsConverter.prototype.subjoined = function (s) {
+        }
+        subjoined(s) {
             return EwtsConverter.m_subjoined_$LI$().get(s);
-        };
-        EwtsConverter.prototype.vowel = function (s) {
+        }
+        vowel(s) {
             return EwtsConverter.m_vowel_$LI$().get(s);
-        };
-        EwtsConverter.prototype.final_uni = function (s) {
+        }
+        final_uni(s) {
             return EwtsConverter.m_final_uni_$LI$().get(s);
-        };
-        EwtsConverter.prototype.final_class = function (s) {
+        }
+        final_class(s) {
             return EwtsConverter.m_final_class_$LI$().get(s);
-        };
-        EwtsConverter.prototype.other = function (s) {
+        }
+        other(s) {
             return EwtsConverter.m_other_$LI$().get(s);
-        };
-        EwtsConverter.prototype.isSpecial = function (s) {
+        }
+        isSpecial(s) {
             return EwtsConverter.m_special_$LI$().contains(s);
-        };
-        EwtsConverter.prototype.isSuperscript = function (s) {
+        }
+        isSuperscript(s) {
             return EwtsConverter.m_superscripts_$LI$().containsKey(s);
-        };
-        EwtsConverter.prototype.superscript = function (sup, below) {
-            var tmpSet = EwtsConverter.m_superscripts_$LI$().get(sup);
+        }
+        superscript(sup, below) {
+            let tmpSet = EwtsConverter.m_superscripts_$LI$().get(sup);
             if (tmpSet == null)
                 return false;
             return tmpSet.contains(below);
-        };
-        EwtsConverter.prototype.isSubscript = function (s) {
+        }
+        isSubscript(s) {
             return EwtsConverter.m_subscripts_$LI$().containsKey(s);
-        };
-        EwtsConverter.prototype.subscript = function (sub, above) {
-            var tmpSet = EwtsConverter.m_subscripts_$LI$().get(sub);
+        }
+        subscript(sub, above) {
+            let tmpSet = EwtsConverter.m_subscripts_$LI$().get(sub);
             if (tmpSet == null)
                 return false;
             return tmpSet.contains(above);
-        };
-        EwtsConverter.prototype.isPrefix = function (s) {
+        }
+        isPrefix(s) {
             return EwtsConverter.m_prefixes_$LI$().containsKey(s);
-        };
-        EwtsConverter.prototype.prefix = function (pref, after) {
-            var tmpSet = EwtsConverter.m_prefixes_$LI$().get(pref);
+        }
+        prefix(pref, after) {
+            let tmpSet = EwtsConverter.m_prefixes_$LI$().get(pref);
             if (tmpSet == null)
                 return false;
             return tmpSet.contains(after);
-        };
-        EwtsConverter.prototype.isSuffix = function (s) {
+        }
+        isSuffix(s) {
             return EwtsConverter.m_suffixes_$LI$().contains(s);
-        };
-        EwtsConverter.prototype.isSuff2 = function (s) {
+        }
+        isSuff2(s) {
             return EwtsConverter.m_suff2_$LI$().containsKey(s);
-        };
-        EwtsConverter.prototype.suff2 = function (suff, before) {
-            var tmpSet = EwtsConverter.m_suff2_$LI$().get(suff);
+        }
+        suff2(suff, before) {
+            let tmpSet = EwtsConverter.m_suff2_$LI$().get(suff);
             if (tmpSet == null)
                 return false;
             return tmpSet.contains(before);
-        };
-        EwtsConverter.prototype.ambiguous_key = function (syll) {
+        }
+        ambiguous_key(syll) {
             return EwtsConverter.m_ambiguous_key_$LI$().get(syll);
-        };
-        EwtsConverter.prototype.ambiguous_wylie = function (syll) {
+        }
+        ambiguous_wylie(syll) {
             return EwtsConverter.m_ambiguous_wylie_$LI$().get(syll);
-        };
-        EwtsConverter.prototype.tib_top = function (c) {
+        }
+        tib_top(c) {
             return EwtsConverter.m_tib_top_$LI$().get(c);
-        };
-        EwtsConverter.prototype.tib_subjoined = function (c) {
+        }
+        tib_subjoined(c) {
             return EwtsConverter.m_tib_subjoined_$LI$().get(c);
-        };
-        EwtsConverter.prototype.tib_vowel = function (c) {
+        }
+        tib_vowel(c) {
             return EwtsConverter.m_tib_vowel_$LI$().get(c);
-        };
-        EwtsConverter.prototype.tib_vowel_long = function (s) {
+        }
+        tib_vowel_long(s) {
             return EwtsConverter.m_tib_vowel_long_$LI$().get(s);
-        };
-        EwtsConverter.prototype.tib_final_wylie = function (c) {
+        }
+        tib_final_wylie(c) {
             return EwtsConverter.m_tib_final_wylie_$LI$().get(c);
-        };
-        EwtsConverter.prototype.tib_final_class = function (c) {
+        }
+        tib_final_class(c) {
             return EwtsConverter.m_tib_final_class_$LI$().get(c);
-        };
-        EwtsConverter.prototype.tib_caret = function (s) {
+        }
+        tib_caret(s) {
             return EwtsConverter.m_tib_caret_$LI$().get(s);
-        };
-        EwtsConverter.prototype.tib_other = function (c) {
+        }
+        tib_other(c) {
             return EwtsConverter.m_tib_other_$LI$().get(c);
-        };
-        EwtsConverter.prototype.tib_stack = function (s) {
+        }
+        tib_stack(s) {
             return EwtsConverter.m_tib_stacks_$LI$().contains(s);
-        };
-        EwtsConverter.prototype.splitIntoTokens = function (str) {
-            var tokens = (function (s) { var a = []; while (s-- > 0)
+        }
+        splitIntoTokens(str) {
+            let tokens = (s => { let a = []; while (s-- > 0)
                 a.push(null); return a; })(str.length + 2);
-            var o = 0;
-            var i = 0;
-            var maxlen = str.length;
+            let o = 0;
+            let i = 0;
+            let maxlen = str.length;
             TOKEN: while ((i < maxlen)) {
                 {
-                    var c = str.charAt(i);
-                    var mlo = EwtsConverter.m_tokens_start_$LI$().get(c);
+                    let c = str.charAt(i);
+                    let mlo = EwtsConverter.m_tokens_start_$LI$().get(c);
                     if (mlo != null) {
-                        for (var len = (mlo | 0); len > 1; len--) {
+                        for (let len = (mlo | 0); len > 1; len--) {
                             {
                                 if (i <= maxlen - len) {
-                                    var tr = str.substring(i, i + len);
+                                    let tr = str.substring(i, i + len);
                                     if (EwtsConverter.m_tokens_$LI$().contains(tr)) {
                                         tokens[o++] = tr;
                                         i += len;
@@ -1431,12 +1238,12 @@ var myCandy;
                             ;
                         }
                     }
-                    if ((function (c) { return c.charCodeAt == null ? c : c.charCodeAt(0); })(c) == '\\'.charCodeAt(0) && i <= maxlen - 2) {
-                        if ((function (c) { return c.charCodeAt == null ? c : c.charCodeAt(0); })(str.charAt(i + 1)) == 'u'.charCodeAt(0) && i <= maxlen - 6) {
+                    if ((c => c.charCodeAt == null ? c : c.charCodeAt(0))(c) == '\\'.charCodeAt(0) && i <= maxlen - 2) {
+                        if ((c => c.charCodeAt == null ? c : c.charCodeAt(0))(str.charAt(i + 1)) == 'u'.charCodeAt(0) && i <= maxlen - 6) {
                             tokens[o++] = str.substring(i, i + 6);
                             i += 6;
                         }
-                        else if ((function (c) { return c.charCodeAt == null ? c : c.charCodeAt(0); })(str.charAt(i + 1)) == 'U'.charCodeAt(0) && i <= maxlen - 10) {
+                        else if ((c => c.charCodeAt == null ? c : c.charCodeAt(0))(str.charAt(i + 1)) == 'U'.charCodeAt(0) && i <= maxlen - 10) {
                             tokens[o++] = str.substring(i, i + 10);
                             i += 10;
                         }
@@ -1452,7 +1259,7 @@ var myCandy;
             }
             ;
             return tokens;
-        };
+        }
         /**
          * Adjusts the input string based on the idea that people often are sloppy when
          * writing Wylie and use ' ' instead of '_' when a space is actually meant in
@@ -1468,15 +1275,15 @@ var myCandy;
          * String to be normalized
          * @return {string} normalized String
          */
-        EwtsConverter.normalizeSloppyWylie = function (str) {
-            str = myCandy.StringUtils.replaceEach(str, EwtsConverter.base_$LI$(), EwtsConverter.repl_$LI$());
+        static normalizeSloppyWylie(str) {
+            str = EwtsConverter.replaceEach(str, EwtsConverter.base_$LI$(), EwtsConverter.repl_$LI$());
             str = /* replaceAll */ str.replace(new RegExp("(^|[^aeiouAIU])H", 'g'), "$1h");
             str = /* replaceAll */ str.replace(new RegExp("(^|[^aeiouAIU~])M", 'g'), "$1m");
             str = /* replace */ str.split("Sh").join("ZZZ");
             str = /* replace */ str.split("S").join("s");
             str = /* replace */ str.split("ZZZ").join("Sh");
             return str;
-        };
+        }
         /**
          * Checks if a character is a Tibetan Unicode combining character.
          *
@@ -1484,56 +1291,50 @@ var myCandy;
          * the character to check
          * @return {boolean} true if x is a Tibetan Unicode combining character
          */
-        EwtsConverter.isCombining = function (x) {
-            return (((function (c) { return c.charCodeAt == null ? c : c.charCodeAt(0); })(x) > 3953 && (function (c) { return c.charCodeAt == null ? c : c.charCodeAt(0); })(x) < 3972) || ((function (c) { return c.charCodeAt == null ? c : c.charCodeAt(0); })(x) < 3981 && (function (c) { return c.charCodeAt == null ? c : c.charCodeAt(0); })(x) > 4028));
-        };
-        EwtsConverter.prototype.toUnicode$java_lang_String = function (str) {
+        static isCombining(x) {
+            return (((c => c.charCodeAt == null ? c : c.charCodeAt(0))(x) > 3953 && (c => c.charCodeAt == null ? c : c.charCodeAt(0))(x) < 3972) || ((c => c.charCodeAt == null ? c : c.charCodeAt(0))(x) < 3981 && (c => c.charCodeAt == null ? c : c.charCodeAt(0))(x) > 4028));
+        }
+        toUnicode$java_lang_String(str) {
             return this.toUnicode$java_lang_String$java_util_List$boolean(str, null, true);
-        };
-        EwtsConverter.prototype.toUnicode$java_lang_String$java_util_List$boolean = function (str, warns, sloppy) {
+        }
+        toUnicode$java_lang_String$java_util_List$boolean(str, warns, sloppy) {
             if (str == null) {
                 return " - no data - ";
             }
-            var out = new java.lang.StringBuilder();
-            var line = 1;
-            var units = 0;
-            if (this.mode === EwtsConverter.Mode.DWTS || this.mode === EwtsConverter.Mode.DTS) {
-                str = myCandy.TransConverter.dtsToEwts(str);
-            }
-            else if (this.mode === EwtsConverter.Mode.ALALC) {
-                str = myCandy.TransConverter.alalcToEwts(str);
-            }
+            let out = new java.lang.StringBuilder();
+            let line = 1;
+            let units = 0;
             if (this.fix_spacing) {
                 str = /* replace */ str.split("^\\s+").join("");
             }
             if (sloppy) {
                 str = EwtsConverter.normalizeSloppyWylie(str);
             }
-            var tokens = this.splitIntoTokens(str);
-            var i = 0;
+            let tokens = this.splitIntoTokens(str);
+            let i = 0;
             ITER: while ((tokens[i] != null)) {
                 {
-                    var t = tokens[i];
-                    var o = void 0;
-                    if ( /* equals */(function (o1, o2) { if (o1 && o1.equals) {
+                    let t = tokens[i];
+                    let o;
+                    if ( /* equals */((o1, o2) => { if (o1 && o1.equals) {
                         return o1.equals(o2);
                     }
                     else {
                         return o1 === o2;
                     } })(t, "[")) {
-                        var nesting = 1;
+                        let nesting = 1;
                         i++;
                         ESC: while ((tokens[i] != null)) {
                             {
                                 t = tokens[i++];
-                                if ( /* equals */(function (o1, o2) { if (o1 && o1.equals) {
+                                if ( /* equals */((o1, o2) => { if (o1 && o1.equals) {
                                     return o1.equals(o2);
                                 }
                                 else {
                                     return o1 === o2;
                                 } })(t, "["))
                                     nesting++;
-                                if ( /* equals */(function (o1, o2) { if (o1 && o1.equals) {
+                                if ( /* equals */((o1, o2) => { if (o1 && o1.equals) {
                                     return o1.equals(o2);
                                 }
                                 else {
@@ -1542,23 +1343,14 @@ var myCandy;
                                     nesting--;
                                 if (nesting === 0)
                                     continue ITER;
-                                if ( /* startsWith */(function (str, searchString, position) {
-                                    if (position === void 0) { position = 0; }
-                                    return str.substr(position, searchString.length) === searchString;
-                                })(t, "\\u") || /* startsWith */ (function (str, searchString, position) {
-                                    if (position === void 0) { position = 0; }
-                                    return str.substr(position, searchString.length) === searchString;
-                                })(t, "\\U")) {
+                                if ( /* startsWith */((str, searchString, position = 0) => str.substr(position, searchString.length) === searchString)(t, "\\u") || /* startsWith */ ((str, searchString, position = 0) => str.substr(position, searchString.length) === searchString)(t, "\\U")) {
                                     o = this.unicodeEscape(warns, line, t);
                                     if (o != null) {
                                         out.append(o);
                                         continue ESC;
                                     }
                                 }
-                                if ( /* startsWith */(function (str, searchString, position) {
-                                    if (position === void 0) { position = 0; }
-                                    return str.substr(position, searchString.length) === searchString;
-                                })(t, "\\")) {
+                                if ( /* startsWith */((str, searchString, position = 0) => str.substr(position, searchString.length) === searchString)(t, "\\")) {
                                     o = t.substring(1);
                                 }
                                 else {
@@ -1576,13 +1368,13 @@ var myCandy;
                         out.append(o);
                         i++;
                         units++;
-                        if ( /* equals */(function (o1, o2) { if (o1 && o1.equals) {
+                        if ( /* equals */((o1, o2) => { if (o1 && o1.equals) {
                             return o1.equals(o2);
                         }
                         else {
                             return o1 === o2;
                         } })(t, " ") && this.fix_spacing) {
-                            while ((tokens[i] != null && /* equals */ (function (o1, o2) { if (o1 && o1.equals) {
+                            while ((tokens[i] != null && /* equals */ ((o1, o2) => { if (o1 && o1.equals) {
                                 return o1.equals(o2);
                             }
                             else {
@@ -1595,9 +1387,9 @@ var myCandy;
                         continue ITER;
                     }
                     if (this.vowel(t) != null || this.consonant(t) != null) {
-                        var tb = this.toUnicodeOneTsekbar(tokens, i);
-                        var word = new java.lang.StringBuilder();
-                        for (var j = 0; j < tb.tokens_used; j++) {
+                        let tb = this.toUnicodeOneTsekbar(tokens, i);
+                        let word = new java.lang.StringBuilder();
+                        for (let j = 0; j < tb.tokens_used; j++) {
                             {
                                 word.append(tokens[i + j]);
                             }
@@ -1606,20 +1398,20 @@ var myCandy;
                         out.append(tb.uni_string);
                         i += tb.tokens_used;
                         units++;
-                        for (var index121 = tb.warns.iterator(); index121.hasNext();) {
-                            var w = index121.next();
+                        for (let index121 = tb.warns.iterator(); index121.hasNext();) {
+                            let w = index121.next();
                             {
                                 this.warnl(warns, line, "\"" + word.toString() + "\": " + w);
                             }
                         }
                         continue ITER;
                     }
-                    if ( /* equals */(function (o1, o2) { if (o1 && o1.equals) {
+                    if ( /* equals */((o1, o2) => { if (o1 && o1.equals) {
                         return o1.equals(o2);
                     }
                     else {
                         return o1 === o2;
-                    } })(t, "\ufeff") || /* equals */ (function (o1, o2) { if (o1 && o1.equals) {
+                    } })(t, "\ufeff") || /* equals */ ((o1, o2) => { if (o1 && o1.equals) {
                         return o1.equals(o2);
                     }
                     else {
@@ -1628,13 +1420,7 @@ var myCandy;
                         i++;
                         continue ITER;
                     }
-                    if ( /* startsWith */(function (str, searchString, position) {
-                        if (position === void 0) { position = 0; }
-                        return str.substr(position, searchString.length) === searchString;
-                    })(t, "\\u") || /* startsWith */ (function (str, searchString, position) {
-                        if (position === void 0) { position = 0; }
-                        return str.substr(position, searchString.length) === searchString;
-                    })(t, "\\U")) {
+                    if ( /* startsWith */((str, searchString, position = 0) => str.substr(position, searchString.length) === searchString)(t, "\\u") || /* startsWith */ ((str, searchString, position = 0) => str.substr(position, searchString.length) === searchString)(t, "\\U")) {
                         o = this.unicodeEscape(warns, line, t);
                         if (o != null) {
                             i++;
@@ -1642,25 +1428,22 @@ var myCandy;
                             continue ITER;
                         }
                     }
-                    if ( /* startsWith */(function (str, searchString, position) {
-                        if (position === void 0) { position = 0; }
-                        return str.substr(position, searchString.length) === searchString;
-                    })(t, "\\")) {
+                    if ( /* startsWith */((str, searchString, position = 0) => str.substr(position, searchString.length) === searchString)(t, "\\")) {
                         out.append(t.substring(1));
                         i++;
                         continue ITER;
                     }
-                    if ( /* equals */(function (o1, o2) { if (o1 && o1.equals) {
+                    if ( /* equals */((o1, o2) => { if (o1 && o1.equals) {
                         return o1.equals(o2);
                     }
                     else {
                         return o1 === o2;
-                    } })(t, "\r\n") || /* equals */ (function (o1, o2) { if (o1 && o1.equals) {
+                    } })(t, "\r\n") || /* equals */ ((o1, o2) => { if (o1 && o1.equals) {
                         return o1.equals(o2);
                     }
                     else {
                         return o1 === o2;
-                    } })(t, "\n") || /* equals */ (function (o1, o2) { if (o1 && o1.equals) {
+                    } })(t, "\n") || /* equals */ ((o1, o2) => { if (o1 && o1.equals) {
                         return o1.equals(o2);
                     }
                     else {
@@ -1670,7 +1453,7 @@ var myCandy;
                         out.append(t);
                         i++;
                         if (this.fix_spacing) {
-                            while ((tokens[i] != null && /* equals */ (function (o1, o2) { if (o1 && o1.equals) {
+                            while ((tokens[i] != null && /* equals */ ((o1, o2) => { if (o1 && o1.equals) {
                                 return o1.equals(o2);
                             }
                             else {
@@ -1682,8 +1465,8 @@ var myCandy;
                         }
                         continue ITER;
                     }
-                    var c = t.charAt(0);
-                    if (this.isSpecial(t) || ((function (c) { return c.charCodeAt == null ? c : c.charCodeAt(0); })(c) >= 'a'.charCodeAt(0) && (function (c) { return c.charCodeAt == null ? c : c.charCodeAt(0); })(c) <= 'z'.charCodeAt(0)) || ((function (c) { return c.charCodeAt == null ? c : c.charCodeAt(0); })(c) >= 'A'.charCodeAt(0) && (function (c) { return c.charCodeAt == null ? c : c.charCodeAt(0); })(c) <= 'Z'.charCodeAt(0))) {
+                    let c = t.charAt(0);
+                    if (this.isSpecial(t) || ((c => c.charCodeAt == null ? c : c.charCodeAt(0))(c) >= 'a'.charCodeAt(0) && (c => c.charCodeAt == null ? c : c.charCodeAt(0))(c) <= 'z'.charCodeAt(0)) || ((c => c.charCodeAt == null ? c : c.charCodeAt(0))(c) >= 'A'.charCodeAt(0) && (c => c.charCodeAt == null ? c : c.charCodeAt(0))(c) <= 'Z'.charCodeAt(0))) {
                         this.warnl(warns, line, "Unexpected character \"" + t + "\".");
                     }
                     out.append(t);
@@ -1699,7 +1482,7 @@ var myCandy;
                 }
             }
             return out.toString();
-        };
+        }
         /**
          * Converts a string to Unicode.
          *
@@ -1711,7 +1494,7 @@ var myCandy;
          * if common EWTS errors should be fixed
          * @return {string} the converted string
          */
-        EwtsConverter.prototype.toUnicode = function (str, warns, sloppy) {
+        toUnicode(str, warns, sloppy) {
             if (((typeof str === 'string') || str === null) && ((warns != null && (warns["__interfaces"] != null && warns["__interfaces"].indexOf("java.util.List") >= 0 || warns.constructor != null && warns.constructor["__interfaces"] != null && warns.constructor["__interfaces"].indexOf("java.util.List") >= 0)) || warns === null) && ((typeof sloppy === 'boolean') || sloppy === null)) {
                 return this.toUnicode$java_lang_String$java_util_List$boolean(str, warns, sloppy);
             }
@@ -1720,20 +1503,20 @@ var myCandy;
             }
             else
                 throw new Error('invalid overload');
-        };
-        EwtsConverter.prototype.validHex = function (t) {
-            for (var i = 0; i < t.length; i++) {
+        }
+        validHex(t) {
+            for (let i = 0; i < t.length; i++) {
                 {
-                    var c = t.charAt(i);
-                    if (!(((function (c) { return c.charCodeAt == null ? c : c.charCodeAt(0); })(c) >= 'a'.charCodeAt(0) && (function (c) { return c.charCodeAt == null ? c : c.charCodeAt(0); })(c) <= 'f'.charCodeAt(0)) || ((function (c) { return c.charCodeAt == null ? c : c.charCodeAt(0); })(c) >= '0'.charCodeAt(0) && (function (c) { return c.charCodeAt == null ? c : c.charCodeAt(0); })(c) <= '9'.charCodeAt(0))))
+                    let c = t.charAt(i);
+                    if (!(((c => c.charCodeAt == null ? c : c.charCodeAt(0))(c) >= 'a'.charCodeAt(0) && (c => c.charCodeAt == null ? c : c.charCodeAt(0))(c) <= 'f'.charCodeAt(0)) || ((c => c.charCodeAt == null ? c : c.charCodeAt(0))(c) >= '0'.charCodeAt(0) && (c => c.charCodeAt == null ? c : c.charCodeAt(0))(c) <= '9'.charCodeAt(0))))
                         return false;
                 }
                 ;
             }
             return true;
-        };
-        EwtsConverter.prototype.unicodeEscape = function (warns, line, t) {
-            var hex = t.substring(2);
+        }
+        unicodeEscape(warns, line, t) {
+            let hex = t.substring(2);
             if ( /* isEmpty */(hex.length === 0))
                 return null;
             if (!this.validHex(hex)) {
@@ -1741,28 +1524,28 @@ var myCandy;
                 return "";
             }
             return javaemul.internal.CharacterHelper.valueOf(String.fromCharCode(javaemul.internal.IntegerHelper.parseInt(hex, 16))).toString();
-        };
-        EwtsConverter.prototype.warn = function (warns, str) {
+        }
+        warn(warns, str) {
             if (warns != null)
                 warns.add(str);
             if (this.print_warnings)
                 console.info(str);
-        };
-        EwtsConverter.prototype.warnl = function (warns, line, str) {
+        }
+        warnl(warns, line, str) {
             this.warn(warns, "line " + line + ": " + str);
-        };
-        EwtsConverter.prototype.debug = function (str) {
+        }
+        debug(str) {
             console.info(str);
-        };
-        EwtsConverter.prototype.debugvar = function (o, name) {
+        }
+        debugvar(o, name) {
             console.info(">>" + name + "<< : (" + (o == null ? "NULL" : o.toString()) + ")");
-        };
-        EwtsConverter.prototype.joinStrings = function (a, sep) {
-            var out = new java.lang.StringBuilder();
-            var len = a.size();
-            var i = 0;
-            for (var index122 = a.iterator(); index122.hasNext();) {
-                var v = index122.next();
+        }
+        joinStrings(a, sep) {
+            let out = new java.lang.StringBuilder();
+            let len = a.size();
+            let i = 0;
+            for (let index122 = a.iterator(); index122.hasNext();) {
+                let v = index122.next();
                 {
                     out.append(v);
                     if (sep != null && i < len - 1)
@@ -1771,26 +1554,26 @@ var myCandy;
                 }
             }
             return out.toString();
-        };
-        EwtsConverter.prototype.toUnicodeOneStack = function (tokens, i) {
-            var orig_i = i;
-            var t;
-            var t2;
-            var o;
-            var out = new java.lang.StringBuilder();
-            var warns = (new java.util.ArrayList());
-            var consonants = 0;
-            var vowel_found = null;
-            var vowel_sign = null;
-            var single_consonant = null;
-            var plus = false;
-            var caret = 0;
-            var final_found = (new java.util.HashMap());
+        }
+        toUnicodeOneStack(tokens, i) {
+            let orig_i = i;
+            let t;
+            let t2;
+            let o;
+            let out = new java.lang.StringBuilder();
+            let warns = (new java.util.ArrayList());
+            let consonants = 0;
+            let vowel_found = null;
+            let vowel_sign = null;
+            let single_consonant = null;
+            let plus = false;
+            let caret = 0;
+            let final_found = (new java.util.HashMap());
             t = tokens[i];
             t2 = tokens[i + 1];
             if (t2 != null && this.isSuperscript(t) && this.superscript(t, t2)) {
                 if (this.check_strict) {
-                    var next = this.consonantString(tokens, i + 1);
+                    let next = this.consonantString(tokens, i + 1);
                     if (!this.superscript(t, next)) {
                         next = /* replace */ next.split("+").join("");
                         warns.add("Superscript \"" + t + "\" does not occur above combination \"" + next + "\".");
@@ -1799,7 +1582,7 @@ var myCandy;
                 out.append(this.consonant(t));
                 consonants++;
                 i++;
-                while ((tokens[i] != null && /* equals */ (function (o1, o2) { if (o1 && o1.equals) {
+                while ((tokens[i] != null && /* equals */ ((o1, o2) => { if (o1 && o1.equals) {
                     return o1.equals(o2);
                 }
                 else {
@@ -1823,7 +1606,7 @@ var myCandy;
                             out.append(this.consonant(t));
                         }
                         i++;
-                        if ( /* equals */(function (o1, o2) { if (o1 && o1.equals) {
+                        if ( /* equals */((o1, o2) => { if (o1 && o1.equals) {
                             return o1.equals(o2);
                         }
                         else {
@@ -1835,7 +1618,7 @@ var myCandy;
                             consonants++;
                             single_consonant = t;
                         }
-                        while ((tokens[i] != null && /* equals */ (function (o1, o2) { if (o1 && o1.equals) {
+                        while ((tokens[i] != null && /* equals */ ((o1, o2) => { if (o1 && o1.equals) {
                             return o1.equals(o2);
                         }
                         else {
@@ -1847,11 +1630,11 @@ var myCandy;
                             }
                         }
                         ;
-                        for (var z = 0; z < 2; z++) {
+                        for (let z = 0; z < 2; z++) {
                             {
                                 t2 = tokens[i];
                                 if (t2 != null && this.isSubscript(t2)) {
-                                    if ( /* equals */(function (o1, o2) { if (o1 && o1.equals) {
+                                    if ( /* equals */((o1, o2) => { if (o1 && o1.equals) {
                                         return o1.equals(o2);
                                     }
                                     else {
@@ -1859,19 +1642,19 @@ var myCandy;
                                     } })(t2, "l") && consonants > 1)
                                         break;
                                     if (this.check_strict && !plus) {
-                                        var prev = this.consonantStringBackwards(tokens, i - 1, orig_i);
+                                        let prev = this.consonantStringBackwards(tokens, i - 1, orig_i);
                                         if (!this.subscript(t2, prev)) {
                                             prev = /* replace */ prev.split("+").join("");
                                             warns.add("Subjoined \"" + t2 + "\" not expected after \"" + prev + "\".");
                                         }
                                     }
                                     else if (this.check) {
-                                        if (!this.subscript(t2, t) && !(z === 1 && /* equals */ (function (o1, o2) { if (o1 && o1.equals) {
+                                        if (!this.subscript(t2, t) && !(z === 1 && /* equals */ ((o1, o2) => { if (o1 && o1.equals) {
                                             return o1.equals(o2);
                                         }
                                         else {
                                             return o1 === o2;
-                                        } })(t2, "w") && /* equals */ (function (o1, o2) { if (o1 && o1.equals) {
+                                        } })(t2, "w") && /* equals */ ((o1, o2) => { if (o1 && o1.equals) {
                                             return o1.equals(o2);
                                         }
                                         else {
@@ -1883,7 +1666,7 @@ var myCandy;
                                     out.append(this.subjoined(t2));
                                     i++;
                                     consonants++;
-                                    while ((tokens[i] != null && /* equals */ (function (o1, o2) { if (o1 && o1.equals) {
+                                    while ((tokens[i] != null && /* equals */ ((o1, o2) => { if (o1 && o1.equals) {
                                         return o1.equals(o2);
                                     }
                                     else {
@@ -1916,7 +1699,7 @@ var myCandy;
                     if (t != null && this.vowel(t) != null) {
                         if (out.length() === 0)
                             out.append(this.vowel("a"));
-                        if (!(function (o1, o2) { if (o1 && o1.equals) {
+                        if (!((o1, o2) => { if (o1 && o1.equals) {
                             return o1.equals(o2);
                         }
                         else {
@@ -1925,7 +1708,7 @@ var myCandy;
                             out.append(this.vowel(t));
                         i++;
                         vowel_found = t;
-                        if (!(function (o1, o2) { if (o1 && o1.equals) {
+                        if (!((o1, o2) => { if (o1 && o1.equals) {
                             return o1.equals(o2);
                         }
                         else {
@@ -1934,7 +1717,7 @@ var myCandy;
                             vowel_sign = t;
                     }
                     t = tokens[i];
-                    if (t != null && /* equals */ (function (o1, o2) { if (o1 && o1.equals) {
+                    if (t != null && /* equals */ ((o1, o2) => { if (o1 && o1.equals) {
                         return o1.equals(o2);
                     }
                     else {
@@ -1952,7 +1735,7 @@ var myCandy;
                             if (this.vowel(t) == null && vowel_sign != null) {
                                 warns.add("Cannot subjoin consonant (" + t + ") after vowel (" + vowel_sign + ") in same stack.");
                             }
-                            else if ( /* equals */(function (o1, o2) { if (o1 && o1.equals) {
+                            else if ( /* equals */((o1, o2) => { if (o1 && o1.equals) {
                                 return o1.equals(o2);
                             }
                             else {
@@ -1970,10 +1753,10 @@ var myCandy;
             t = tokens[i];
             while ((t != null && this.final_class(t) != null)) {
                 {
-                    var uni = this.final_uni(t);
-                    var klass = this.final_class(t);
+                    let uni = this.final_uni(t);
+                    let klass = this.final_class(t);
                     if (final_found.containsKey(klass)) {
-                        if ( /* equals */(function (o1, o2) { if (o1 && o1.equals) {
+                        if ( /* equals */((o1, o2) => { if (o1 && o1.equals) {
                             return o1.equals(o2);
                         }
                         else {
@@ -1995,7 +1778,7 @@ var myCandy;
                 }
             }
             ;
-            if (tokens[i] != null && /* equals */ (function (o1, o2) { if (o1 && o1.equals) {
+            if (tokens[i] != null && /* equals */ ((o1, o2) => { if (o1 && o1.equals) {
                 return o1.equals(o2);
             }
             else {
@@ -2018,7 +1801,7 @@ var myCandy;
             if (consonants !== 1 || plus) {
                 single_consonant = null;
             }
-            var ret = new EwtsConverter.WylieStack();
+            let ret = new EwtsConverter.WylieStack();
             ret.uni_string = out.toString();
             ret.tokens_used = i - orig_i;
             if (vowel_found != null) {
@@ -2027,7 +1810,7 @@ var myCandy;
             else {
                 ret.single_consonant = single_consonant;
             }
-            if (vowel_found != null && /* equals */ (function (o1, o2) { if (o1 && o1.equals) {
+            if (vowel_found != null && /* equals */ ((o1, o2) => { if (o1 && o1.equals) {
                 return o1.equals(o2);
             }
             else {
@@ -2041,19 +1824,19 @@ var myCandy;
             ret.warns = warns;
             ret.visarga = final_found.containsKey("H");
             return ret;
-        };
-        EwtsConverter.prototype.toUnicodeOneTsekbar = function (tokens, i) {
-            var orig_i = i;
-            var t = tokens[i];
-            var stack = null;
-            var prev_cons = null;
-            var visarga = false;
-            var check_root = true;
-            var consonants = (new java.util.ArrayList());
-            var root_idx = -1;
-            var out = new java.lang.StringBuilder();
-            var warns = (new java.util.ArrayList());
-            var state = EwtsConverter.State.PREFIX;
+        }
+        toUnicodeOneTsekbar(tokens, i) {
+            let orig_i = i;
+            let t = tokens[i];
+            let stack = null;
+            let prev_cons = null;
+            let visarga = false;
+            let check_root = true;
+            let consonants = (new java.util.ArrayList());
+            let root_idx = -1;
+            let out = new java.lang.StringBuilder();
+            let warns = (new java.util.ArrayList());
+            let state = EwtsConverter.State.PREFIX;
             /*STACK:*/ while ((t != null && (this.vowel(t) != null || this.consonant(t) != null) && !visarga)) {
                 {
                     if (stack != null)
@@ -2069,7 +1852,7 @@ var myCandy;
                     if (state === EwtsConverter.State.PREFIX && stack.single_consonant != null) {
                         consonants.add(stack.single_consonant);
                         if (this.isPrefix(stack.single_consonant)) {
-                            var next = t;
+                            let next = t;
                             if (this.check_strict)
                                 next = this.consonantString(tokens, i);
                             if (next != null && !this.prefix(stack.single_consonant, next)) {
@@ -2112,7 +1895,7 @@ var myCandy;
                             }
                         }
                         else {
-                            if (!EwtsConverter.m_affixedsuff2_$LI$().contains(stack.single_consonant) || !(function (o1, o2) { if (o1 && o1.equals) {
+                            if (!EwtsConverter.m_affixedsuff2_$LI$().contains(stack.single_consonant) || !((o1, o2) => { if (o1 && o1.equals) {
                                 return o1.equals(o2);
                             }
                             else {
@@ -2136,39 +1919,39 @@ var myCandy;
                 if (consonants.size() === 2 && root_idx !== 0 && this.prefix(consonants.get(0), consonants.get(1)) && this.isSuffix(consonants.get(1))) {
                     warns.add("Syllable should probably be \"" + consonants.get(0) + "a" + consonants.get(1) + "\".");
                 }
-                else if (consonants.size() === 3 && this.isPrefix(consonants.get(0)) && this.suff2("s", consonants.get(1)) && /* equals */ (function (o1, o2) { if (o1 && o1.equals) {
+                else if (consonants.size() === 3 && this.isPrefix(consonants.get(0)) && this.suff2("s", consonants.get(1)) && /* equals */ ((o1, o2) => { if (o1 && o1.equals) {
                     return o1.equals(o2);
                 }
                 else {
                     return o1 === o2;
                 } })(consonants.get(2), "s")) {
-                    var cc = this.joinStrings(consonants, "");
+                    let cc = this.joinStrings(consonants, "");
                     cc = /* replace */ cc.split('\u2018').join('\'');
                     cc = /* replace */ cc.split('\u2019').join('\'');
-                    var expect_key = this.ambiguous_key(cc);
+                    let expect_key = this.ambiguous_key(cc);
                     if (expect_key != null && /* intValue */ (expect_key | 0) !== root_idx) {
                         warns.add("Syllable should probably be \"" + this.ambiguous_wylie(cc) + "\".");
                     }
                 }
             }
-            var ret = new EwtsConverter.WylieTsekbar();
+            let ret = new EwtsConverter.WylieTsekbar();
             ret.uni_string = out.toString();
             ret.tokens_used = i - orig_i;
             ret.warns = warns;
             return ret;
-        };
-        EwtsConverter.prototype.consonantString = function (tokens, i) {
-            var out = (new java.util.ArrayList());
-            var t;
+        }
+        consonantString(tokens, i) {
+            let out = (new java.util.ArrayList());
+            let t;
             while ((tokens[i] != null)) {
                 {
                     t = tokens[i++];
-                    if ( /* equals */(function (o1, o2) { if (o1 && o1.equals) {
+                    if ( /* equals */((o1, o2) => { if (o1 && o1.equals) {
                         return o1.equals(o2);
                     }
                     else {
                         return o1 === o2;
-                    } })(t, "+") || /* equals */ (function (o1, o2) { if (o1 && o1.equals) {
+                    } })(t, "+") || /* equals */ ((o1, o2) => { if (o1 && o1.equals) {
                         return o1.equals(o2);
                     }
                     else {
@@ -2182,19 +1965,19 @@ var myCandy;
             }
             ;
             return this.joinStrings(out, "+");
-        };
-        EwtsConverter.prototype.consonantStringBackwards = function (tokens, i, orig_i) {
-            var out = (new java.util.LinkedList());
-            var t;
+        }
+        consonantStringBackwards(tokens, i, orig_i) {
+            let out = (new java.util.LinkedList());
+            let t;
             while ((i >= orig_i && tokens[i] != null)) {
                 {
                     t = tokens[i--];
-                    if ( /* equals */(function (o1, o2) { if (o1 && o1.equals) {
+                    if ( /* equals */((o1, o2) => { if (o1 && o1.equals) {
                         return o1.equals(o2);
                     }
                     else {
                         return o1 === o2;
-                    } })(t, "+") || /* equals */ (function (o1, o2) { if (o1 && o1.equals) {
+                    } })(t, "+") || /* equals */ ((o1, o2) => { if (o1 && o1.equals) {
                         return o1.equals(o2);
                     }
                     else {
@@ -2208,13 +1991,13 @@ var myCandy;
             }
             ;
             return this.joinStrings(out, "+");
-        };
-        EwtsConverter.prototype.toWylie$java_lang_String = function (str) {
+        }
+        toWylie$java_lang_String(str) {
             return this.toWylie$java_lang_String$java_util_List$boolean(str, null, true);
-        };
-        EwtsConverter.prototype.toWylie$java_lang_String$java_util_List$boolean = function (str, warns, escape) {
-            var out = new java.lang.StringBuilder();
-            var line = 1;
+        }
+        toWylie$java_lang_String$java_util_List$boolean(str, warns, escape) {
+            let out = new java.lang.StringBuilder();
+            let line = 1;
             str = /* replace */ str.split("\u0f76").join("\u0fb2\u0f80");
             str = /* replace */ str.split("\u0f77").join("\u0fb2\u0f71\u0f80");
             str = /* replace */ str.split("\u0f78").join("\u0fb3\u0f80");
@@ -2222,17 +2005,17 @@ var myCandy;
             str = /* replace */ str.split("\u0f81").join("\u0f71\u0f80");
             str = /* replace */ str.split("\u0f75").join("\u0f71\u0f74");
             str = /* replace */ str.split("\u0f73").join("\u0f71\u0f72");
-            var i = 0;
-            var len = str.length;
+            let i = 0;
+            let len = str.length;
             ITER: while ((i < len)) {
                 {
-                    var t = str.charAt(i);
+                    let t = str.charAt(i);
                     if (this.tib_top(t) != null) {
-                        var tb = this.toWylieOneTsekbar(str, len, i);
+                        let tb = this.toWylieOneTsekbar(str, len, i);
                         out.append(tb.wylie);
                         i += tb.tokens_used;
-                        for (var index123 = tb.warns.iterator(); index123.hasNext();) {
-                            var w = index123.next();
+                        for (let index123 = tb.warns.iterator(); index123.hasNext();) {
+                            let w = index123.next();
                             {
                                 this.warnl(warns, line, w);
                             }
@@ -2241,25 +2024,25 @@ var myCandy;
                             i += this.handleSpaces(str, i, out);
                         continue ITER;
                     }
-                    var o = this.tib_other(t);
-                    if (o != null && ((function (c) { return c.charCodeAt == null ? c : c.charCodeAt(0); })(t) != ' '.charCodeAt(0) || (escape && !this.followedByNonTibetan(str, i)))) {
+                    let o = this.tib_other(t);
+                    if (o != null && ((c => c.charCodeAt == null ? c : c.charCodeAt(0))(t) != ' '.charCodeAt(0) || (escape && !this.followedByNonTibetan(str, i)))) {
                         out.append(o);
                         i++;
                         if (!escape)
                             i += this.handleSpaces(str, i, out);
                         continue ITER;
                     }
-                    if ((function (c) { return c.charCodeAt == null ? c : c.charCodeAt(0); })(t) == '\r'.charCodeAt(0) || (function (c) { return c.charCodeAt == null ? c : c.charCodeAt(0); })(t) == '\n'.charCodeAt(0)) {
+                    if ((c => c.charCodeAt == null ? c : c.charCodeAt(0))(t) == '\r'.charCodeAt(0) || (c => c.charCodeAt == null ? c : c.charCodeAt(0))(t) == '\n'.charCodeAt(0)) {
                         line++;
                         i++;
                         out.append(t);
-                        if ((function (c) { return c.charCodeAt == null ? c : c.charCodeAt(0); })(t) == '\r'.charCodeAt(0) && i < len && (function (c) { return c.charCodeAt == null ? c : c.charCodeAt(0); })(str.charAt(i)) == '\n'.charCodeAt(0)) {
+                        if ((c => c.charCodeAt == null ? c : c.charCodeAt(0))(t) == '\r'.charCodeAt(0) && i < len && (c => c.charCodeAt == null ? c : c.charCodeAt(0))(str.charAt(i)) == '\n'.charCodeAt(0)) {
                             i++;
                             out.append('\n');
                         }
                         continue ITER;
                     }
-                    if ((function (c) { return c.charCodeAt == null ? c : c.charCodeAt(0); })(t) == '\ufeff'.charCodeAt(0) || (function (c) { return c.charCodeAt == null ? c : c.charCodeAt(0); })(t) == '\u200b'.charCodeAt(0)) {
+                    if ((c => c.charCodeAt == null ? c : c.charCodeAt(0))(t) == '\ufeff'.charCodeAt(0) || (c => c.charCodeAt == null ? c : c.charCodeAt(0))(t) == '\u200b'.charCodeAt(0)) {
                         i++;
                         continue ITER;
                     }
@@ -2268,8 +2051,8 @@ var myCandy;
                         i++;
                         continue ITER;
                     }
-                    if ((function (c) { return c.charCodeAt == null ? c : c.charCodeAt(0); })(t) >= '\u0f00'.charCodeAt(0) && (function (c) { return c.charCodeAt == null ? c : c.charCodeAt(0); })(t) <= '\u0fff'.charCodeAt(0)) {
-                        var c = this.formatHex(t);
+                    if ((c => c.charCodeAt == null ? c : c.charCodeAt(0))(t) >= '\u0f00'.charCodeAt(0) && (c => c.charCodeAt == null ? c : c.charCodeAt(0))(t) <= '\u0fff'.charCodeAt(0)) {
+                        let c = this.formatHex(t);
                         out.append(c);
                         i++;
                         if (this.tib_subjoined(t) != null || this.tib_vowel(t) != null || this.tib_final_wylie(t) != null) {
@@ -2278,13 +2061,13 @@ var myCandy;
                         continue ITER;
                     }
                     out.append("[");
-                    while ((this.tib_top(t) == null && (this.tib_other(t) == null || (function (c) { return c.charCodeAt == null ? c : c.charCodeAt(0); })(t) == ' '.charCodeAt(0)) && (function (c) { return c.charCodeAt == null ? c : c.charCodeAt(0); })(t) != '\r'.charCodeAt(0) && (function (c) { return c.charCodeAt == null ? c : c.charCodeAt(0); })(t) != '\n'.charCodeAt(0))) {
+                    while ((this.tib_top(t) == null && (this.tib_other(t) == null || (c => c.charCodeAt == null ? c : c.charCodeAt(0))(t) == ' '.charCodeAt(0)) && (c => c.charCodeAt == null ? c : c.charCodeAt(0))(t) != '\r'.charCodeAt(0) && (c => c.charCodeAt == null ? c : c.charCodeAt(0))(t) != '\n'.charCodeAt(0))) {
                         {
-                            if ((function (c) { return c.charCodeAt == null ? c : c.charCodeAt(0); })(t) == '['.charCodeAt(0) || (function (c) { return c.charCodeAt == null ? c : c.charCodeAt(0); })(t) == ']'.charCodeAt(0)) {
+                            if ((c => c.charCodeAt == null ? c : c.charCodeAt(0))(t) == '['.charCodeAt(0) || (c => c.charCodeAt == null ? c : c.charCodeAt(0))(t) == ']'.charCodeAt(0)) {
                                 out.append("\\");
                                 out.append(t);
                             }
-                            else if ((function (c) { return c.charCodeAt == null ? c : c.charCodeAt(0); })(t) >= '\u0f00'.charCodeAt(0) && (function (c) { return c.charCodeAt == null ? c : c.charCodeAt(0); })(t) <= '\u0fff'.charCodeAt(0)) {
+                            else if ((c => c.charCodeAt == null ? c : c.charCodeAt(0))(t) >= '\u0f00'.charCodeAt(0) && (c => c.charCodeAt == null ? c : c.charCodeAt(0))(t) <= '\u0fff'.charCodeAt(0)) {
                                 out.append(this.formatHex(t));
                             }
                             else {
@@ -2301,7 +2084,7 @@ var myCandy;
             }
             ;
             return out.toString();
-        };
+        }
         /**
          * Converts from Unicode strings to Converter (EWTS) transliteration.
          *
@@ -2315,7 +2098,7 @@ var myCandy;
          * just passed through.
          * @return {string} the corresponding EWTS string
          */
-        EwtsConverter.prototype.toWylie = function (str, warns, escape) {
+        toWylie(str, warns, escape) {
             if (((typeof str === 'string') || str === null) && ((warns != null && (warns["__interfaces"] != null && warns["__interfaces"].indexOf("java.util.List") >= 0 || warns.constructor != null && warns.constructor["__interfaces"] != null && warns.constructor["__interfaces"].indexOf("java.util.List") >= 0)) || warns === null) && ((typeof escape === 'boolean') || escape === null)) {
                 return this.toWylie$java_lang_String$java_util_List$boolean(str, warns, escape);
             }
@@ -2324,12 +2107,12 @@ var myCandy;
             }
             else
                 throw new Error('invalid overload');
-        };
-        EwtsConverter.prototype.formatHex = function (t) {
-            var sb = new java.lang.StringBuilder();
+        }
+        formatHex(t) {
+            let sb = new java.lang.StringBuilder();
             sb.append("\\u");
-            var s = javaemul.internal.IntegerHelper.toHexString((t).charCodeAt(0));
-            for (var i = s.length; i < 4; i++) {
+            let s = javaemul.internal.IntegerHelper.toHexString((t).charCodeAt(0));
+            for (let i = s.length; i < 4; i++) {
                 {
                     sb.append('0');
                 }
@@ -2337,11 +2120,11 @@ var myCandy;
             }
             sb.append(s);
             return sb.toString();
-        };
-        EwtsConverter.prototype.handleSpaces = function (str, i, out) {
-            var found = 0;
-            var orig_i = i;
-            while ((i < str.length && (function (c) { return c.charCodeAt == null ? c : c.charCodeAt(0); })(str.charAt(i)) == ' '.charCodeAt(0))) {
+        }
+        handleSpaces(str, i, out) {
+            let found = 0;
+            let orig_i = i;
+            while ((i < str.length && (c => c.charCodeAt == null ? c : c.charCodeAt(0))(str.charAt(i)) == ' '.charCodeAt(0))) {
                 {
                     i++;
                     found++;
@@ -2350,7 +2133,7 @@ var myCandy;
             ;
             if (found === 0 || i === str.length)
                 return 0;
-            var t = str.charAt(i);
+            let t = str.charAt(i);
             if (this.tib_top(t) == null && this.tib_other(t) == null)
                 return 0;
             for (i = 0; i < found; i++) {
@@ -2360,10 +2143,10 @@ var myCandy;
                 ;
             }
             return found;
-        };
-        EwtsConverter.prototype.followedByNonTibetan = function (str, i) {
-            var len = str.length;
-            while ((i < len && (function (c) { return c.charCodeAt == null ? c : c.charCodeAt(0); })(str.charAt(i)) == ' '.charCodeAt(0))) {
+        }
+        followedByNonTibetan(str, i) {
+            let len = str.length;
+            while ((i < len && (c => c.charCodeAt == null ? c : c.charCodeAt(0))(str.charAt(i)) == ' '.charCodeAt(0))) {
                 {
                     i++;
                 }
@@ -2371,16 +2154,16 @@ var myCandy;
             ;
             if (i === len)
                 return false;
-            var t = str.charAt(i);
-            return this.tib_top(t) == null && this.tib_other(t) == null && (function (c) { return c.charCodeAt == null ? c : c.charCodeAt(0); })(t) != '\r'.charCodeAt(0) && (function (c) { return c.charCodeAt == null ? c : c.charCodeAt(0); })(t) != '\n'.charCodeAt(0);
-        };
-        EwtsConverter.prototype.toWylieOneTsekbar = function (str, len, i) {
-            var orig_i = i;
-            var warns = (new java.util.ArrayList());
-            var stacks = (new java.util.ArrayList());
+            let t = str.charAt(i);
+            return this.tib_top(t) == null && this.tib_other(t) == null && (c => c.charCodeAt == null ? c : c.charCodeAt(0))(t) != '\r'.charCodeAt(0) && (c => c.charCodeAt == null ? c : c.charCodeAt(0))(t) != '\n'.charCodeAt(0);
+        }
+        toWylieOneTsekbar(str, len, i) {
+            let orig_i = i;
+            let warns = (new java.util.ArrayList());
+            let stacks = (new java.util.ArrayList());
             ITER: while ((true)) {
                 {
-                    var st = this.toWylieOneStack(str, len, i);
+                    let st = this.toWylieOneStack(str, len, i);
                     stacks.add(st);
                     warns.addAll(st.warns);
                     i += st.tokens_used;
@@ -2391,9 +2174,9 @@ var myCandy;
                 }
             }
             ;
-            var last = stacks.size() - 1;
+            let last = stacks.size() - 1;
             if (stacks.size() > 1 && stacks.get(0).single_cons != null) {
-                var cs = stacks.get(1).cons_str.split("+w").join("");
+                let cs = stacks.get(1).cons_str.split("+w").join("");
                 if (this.prefix(stacks.get(0).single_cons, cs)) {
                     stacks.get(0).prefix = true;
                 }
@@ -2409,15 +2192,15 @@ var myCandy;
                 stacks.get(0).prefix = false;
             }
             if (stacks.size() === 3 && stacks.get(0).prefix && stacks.get(1).suffix && stacks.get(2).suff2) {
-                var strb = new java.lang.StringBuilder();
-                for (var index124 = stacks.iterator(); index124.hasNext();) {
-                    var st = index124.next();
+                let strb = new java.lang.StringBuilder();
+                for (let index124 = stacks.iterator(); index124.hasNext();) {
+                    let st = index124.next();
                     {
                         strb.append(st.single_cons);
                     }
                 }
-                var ztr = strb.toString();
-                var root = this.ambiguous_key(ztr);
+                let ztr = strb.toString();
+                let root = this.ambiguous_key(ztr);
                 if (root == null) {
                     warns.add("Ambiguous syllable found: root consonant not known for \"" + ztr + "\".");
                     root = 1;
@@ -2428,32 +2211,32 @@ var myCandy;
             if (stacks.get(0).prefix && this.tib_stack(stacks.get(0).single_cons + "+" + stacks.get(1).cons_str)) {
                 stacks.get(0).dot = true;
             }
-            var out = new java.lang.StringBuilder();
-            for (var index125 = stacks.iterator(); index125.hasNext();) {
-                var st = index125.next();
+            let out = new java.lang.StringBuilder();
+            for (let index125 = stacks.iterator(); index125.hasNext();) {
+                let st = index125.next();
                 {
                     out.append(this.putStackTogether(st));
                 }
             }
-            var ret = new EwtsConverter.ToWylieTsekbar();
+            let ret = new EwtsConverter.ToWylieTsekbar();
             ret.wylie = out.toString();
             ret.tokens_used = i - orig_i;
             ret.warns = warns;
             return ret;
-        };
-        EwtsConverter.prototype.toWylieOneStack = function (str, len, i) {
-            var orig_i = i;
-            var ffinal = null;
-            var vowel = null;
-            var klass = null;
-            var st = new EwtsConverter.ToWylieStack();
-            var t = str.charAt(i++);
+        }
+        toWylieOneStack(str, len, i) {
+            let orig_i = i;
+            let ffinal = null;
+            let vowel = null;
+            let klass = null;
+            let st = new EwtsConverter.ToWylieStack();
+            let t = str.charAt(i++);
             st.top = this.tib_top(t);
             st.stack.add(this.tib_top(t));
             while ((i < len)) {
                 {
                     t = str.charAt(i);
-                    var o = void 0;
+                    let o;
                     if ((o = this.tib_subjoined(t)) != null) {
                         i++;
                         st.stack.add(o);
@@ -2476,7 +2259,7 @@ var myCandy;
                     else if ((o = this.tib_final_wylie(t)) != null) {
                         i++;
                         klass = this.tib_final_class(t);
-                        if ( /* equals */(function (o1, o2) { if (o1 && o1.equals) {
+                        if ( /* equals */((o1, o2) => { if (o1 && o1.equals) {
                             return o1.equals(o2);
                         }
                         else {
@@ -2485,7 +2268,7 @@ var myCandy;
                             st.caret = true;
                         }
                         else {
-                            if ( /* equals */(function (o1, o2) { if (o1 && o1.equals) {
+                            if ( /* equals */((o1, o2) => { if (o1 && o1.equals) {
                                 return o1.equals(o2);
                             }
                             else {
@@ -2509,7 +2292,7 @@ var myCandy;
                 }
             }
             ;
-            if ( /* equals */(function (o1, o2) { if (o1 && o1.equals) {
+            if ( /* equals */((o1, o2) => { if (o1 && o1.equals) {
                 return o1.equals(o2);
             }
             else {
@@ -2517,26 +2300,26 @@ var myCandy;
             } })(st.top, "a") && st.stack.size() === 1 && !st.vowels.isEmpty()) {
                 st.stack.removeFirst();
             }
-            if (st.vowels.size() > 1 && /* equals */ (function (o1, o2) { if (o1 && o1.equals) {
+            if (st.vowels.size() > 1 && /* equals */ ((o1, o2) => { if (o1 && o1.equals) {
                 return o1.equals(o2);
             }
             else {
                 return o1 === o2;
             } })(st.vowels.get(0), "A") && this.tib_vowel_long(st.vowels.get(1)) != null) {
-                var l = this.tib_vowel_long(st.vowels.get(1));
+                let l = this.tib_vowel_long(st.vowels.get(1));
                 st.vowels.removeFirst();
                 st.vowels.removeFirst();
                 st.vowels.addFirst(l);
             }
             if (st.caret && st.stack.size() === 1 && this.tib_caret(st.top) != null) {
-                var l = this.tib_caret(st.top);
+                let l = this.tib_caret(st.top);
                 st.top = l;
                 st.stack.removeFirst();
                 st.stack.addFirst(l);
                 st.caret = false;
             }
             st.cons_str = this.joinStrings(st.stack, "+");
-            if (st.stack.size() === 1 && !(function (o1, o2) { if (o1 && o1.equals) {
+            if (st.stack.size() === 1 && !((o1, o2) => { if (o1 && o1.equals) {
                 return o1.equals(o2);
             }
             else {
@@ -2546,9 +2329,9 @@ var myCandy;
             }
             st.tokens_used = i - orig_i;
             return st;
-        };
-        EwtsConverter.prototype.putStackTogether = function (st) {
-            var out = new java.lang.StringBuilder();
+        }
+        putStackTogether(st) {
+            let out = new java.lang.StringBuilder();
             if (this.tib_stack(st.cons_str)) {
                 out.append(this.joinStrings(st.stack, ""));
             }
@@ -2561,21 +2344,20 @@ var myCandy;
             if (!st.vowels.isEmpty()) {
                 out.append(this.joinStrings(st.vowels, "+"));
             }
-            else if (!st.prefix && !st.suffix && !st.suff2 && ( /* isEmpty */(st.cons_str.length === 0) || (function (c) { return c.charCodeAt == null ? c : c.charCodeAt(0); })(st.cons_str.charAt(st.cons_str.length - 1)) != 'a'.charCodeAt(0))) {
+            else if (!st.prefix && !st.suffix && !st.suff2 && ( /* isEmpty */(st.cons_str.length === 0) || (c => c.charCodeAt == null ? c : c.charCodeAt(0))(st.cons_str.charAt(st.cons_str.length - 1)) != 'a'.charCodeAt(0))) {
                 out.append("a");
             }
             out.append(this.joinStrings(st.finals, ""));
             if (st.dot)
                 out.append(".");
             return out.toString();
-        };
-        EwtsConverter.__static_initialized = false;
-        return EwtsConverter;
-    }());
+        }
+    }
+    EwtsConverter.__static_initialized = false;
     myCandy.EwtsConverter = EwtsConverter;
     EwtsConverter["__class"] = "myCandy.EwtsConverter";
     (function (EwtsConverter) {
-        var Mode;
+        let Mode;
         (function (Mode) {
             Mode[Mode["WYLIE"] = 0] = "WYLIE";
             Mode[Mode["EWTS"] = 1] = "EWTS";
@@ -2584,7 +2366,7 @@ var myCandy;
             Mode[Mode["ALALC"] = 4] = "ALALC";
             Mode[Mode["ACIP"] = 5] = "ACIP";
         })(Mode = EwtsConverter.Mode || (EwtsConverter.Mode = {}));
-        var State;
+        let State;
         (function (State) {
             State[State["PREFIX"] = 0] = "PREFIX";
             State[State["MAIN"] = 1] = "MAIN";
@@ -2592,8 +2374,8 @@ var myCandy;
             State[State["SUFF2"] = 3] = "SUFF2";
             State[State["NONE"] = 4] = "NONE";
         })(State = EwtsConverter.State || (EwtsConverter.State = {}));
-        var WylieStack = /** @class */ (function () {
-            function WylieStack() {
+        class WylieStack {
+            constructor() {
                 if (this.uni_string === undefined)
                     this.uni_string = null;
                 if (this.tokens_used === undefined)
@@ -2607,12 +2389,11 @@ var myCandy;
                 if (this.visarga === undefined)
                     this.visarga = false;
             }
-            return WylieStack;
-        }());
+        }
         EwtsConverter.WylieStack = WylieStack;
         WylieStack["__class"] = "myCandy.EwtsConverter.WylieStack";
-        var WylieTsekbar = /** @class */ (function () {
-            function WylieTsekbar() {
+        class WylieTsekbar {
+            constructor() {
                 if (this.uni_string === undefined)
                     this.uni_string = null;
                 if (this.tokens_used === undefined)
@@ -2620,12 +2401,11 @@ var myCandy;
                 if (this.warns === undefined)
                     this.warns = null;
             }
-            return WylieTsekbar;
-        }());
+        }
         EwtsConverter.WylieTsekbar = WylieTsekbar;
         WylieTsekbar["__class"] = "myCandy.EwtsConverter.WylieTsekbar";
-        var ToWylieStack = /** @class */ (function () {
-            function ToWylieStack() {
+        class ToWylieStack {
+            constructor() {
                 if (this.top === undefined)
                     this.top = null;
                 if (this.stack === undefined)
@@ -2662,12 +2442,11 @@ var myCandy;
                 this.finals_found = (new java.util.HashMap());
                 this.warns = (new java.util.ArrayList());
             }
-            return ToWylieStack;
-        }());
+        }
         EwtsConverter.ToWylieStack = ToWylieStack;
         ToWylieStack["__class"] = "myCandy.EwtsConverter.ToWylieStack";
-        var ToWylieTsekbar = /** @class */ (function () {
-            function ToWylieTsekbar() {
+        class ToWylieTsekbar {
+            constructor() {
                 if (this.wylie === undefined)
                     this.wylie = null;
                 if (this.tokens_used === undefined)
@@ -2675,8 +2454,7 @@ var myCandy;
                 if (this.warns === undefined)
                     this.warns = null;
             }
-            return ToWylieTsekbar;
-        }());
+        }
         EwtsConverter.ToWylieTsekbar = ToWylieTsekbar;
         ToWylieTsekbar["__class"] = "myCandy.EwtsConverter.ToWylieTsekbar";
     })(EwtsConverter = myCandy.EwtsConverter || (myCandy.EwtsConverter = {}));
@@ -2710,13 +2488,5 @@ myCandy.EwtsConverter.m_vowel_$LI$();
 myCandy.EwtsConverter.m_subjoined_$LI$();
 myCandy.EwtsConverter.m_consonant_$LI$();
 myCandy.EwtsConverter.__static_initialize();
-myCandy.TransConverter.replMapEwtsToAlalc_$LI$();
-myCandy.TransConverter.replMapDtsToEwts_$LI$();
-myCandy.TransConverter.replMapAlalcToEwts_$LI$();
-myCandy.TransConverter.replEwtsToAlalc_$LI$();
-myCandy.TransConverter.baseEwts_$LI$();
-myCandy.TransConverter.replDtsToEwts_$LI$();
-myCandy.TransConverter.replAlalcToEwts_$LI$();
-myCandy.TransConverter.baseAlalc_$LI$();
-myCandy.TransConverter.baseDts_$LI$();
-myCandy.TransConverter.__static_initialize();
+
+module.exports = myCandy.EwtsConverter;
